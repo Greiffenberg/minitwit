@@ -49,10 +49,10 @@ Consists of three outer folders; backend, frontend, legacy_project
 ### Frontend folder
 The frontend folder contains a React application which consists of:
 1. src
-..1. App.js
-..2. Index.js
-..3. Folder of components
-..4. Folder of pages
+⋅⋅1. App.js
+⋅⋅2. Index.js
+⋅⋅3. Folder of components
+⋅⋅4. Folder of pages
 2. public
 3. package.json
 
