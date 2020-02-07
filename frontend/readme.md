@@ -2,6 +2,8 @@
 
 ## Installation and Setup Instructions
 
+## How To Run It
+
 ## Folder Structure
 
 ## Architecture Decisions
