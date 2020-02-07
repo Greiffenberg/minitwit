@@ -1,4 +1,4 @@
-# MiniTwit Project - Group "G"
+# MiniTwit Project - Group "LearnIT > GitHub"
 
 ### Legacy project
 Located in the subdirectory: ```legacy_project``
