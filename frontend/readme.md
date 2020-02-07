@@ -19,6 +19,12 @@ $ npm --version
 3.5.2
 ```
 ## How To Run It
+### Install project
+```console
+$ git clone
+$
+$
+```
 ### Start
 ```console
 $ npm start
