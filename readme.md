@@ -1,4 +1,14 @@
 # MiniTwit Project - Group "LearnIT > GitHub"
+### Frontend project
+Located in the subdirectory: `frontend`
+This project uses react and can be launched independently of the backend.
+
+### Backend project
+Located in the subdirectory: `backend`
+This project uses NodeJS and Express to expose a MongoDB database through
+ a REST API for consumption from the frontend and simulation tool.
+
+The project can be launched independently of the backend.
 
 ### Legacy project
 Located in the subdirectory: `legacy_project`
