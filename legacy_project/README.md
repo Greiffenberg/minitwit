@@ -1,2 +1,3 @@
-# OneDevOps
-Repository of group one a.k.a group LearnIT > GitHub
+# Legacy Flask Project
+Refactored for ubuntu 18.04.
+For more information, see README
