@@ -1,6 +1,8 @@
 # MiniTwit Project - Group "LearnIT > GitHub"
 
 ## Installation and Setup Instructions
+# Node installation on Linux
+  sudo apt install nodejs
 
 ## How To Run It
 
