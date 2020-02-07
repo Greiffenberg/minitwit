@@ -2,9 +2,10 @@
 
 ## Installation and Setup Instructions
 # Node installation on Linux
-  '''console
-  sudo apt install nodejs
-  '''
+```console
+sudo apt install nodejs
+foo
+```
 ## How To Run It
 
 ## Language and Tools
