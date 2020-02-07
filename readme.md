@@ -1,4 +1,9 @@
 # MiniTwit Project - Group "LearnIT > GitHub"
+
+## Controlling the project
+A control script has yet to be implemented - see
+ the individual system readme files for information on operations.
+
 ### Frontend project
 Located in the subdirectory: `frontend`
 This project uses react and can be launched independently of the backend.
