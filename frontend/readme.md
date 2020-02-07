@@ -21,11 +21,11 @@ $ npm --version
 ## How To Run It
 ### Install project
 ```console
-$ git clone
-$
-$
+$ git clone https://github.itu.dk/mahn/OneDevOps.git
+$ cd OneDevOps
+$ npm install
 ```
-### Start
+### Start project
 ```console
 $ npm start
 ```
