@@ -48,9 +48,13 @@ The React app creation in this project was done on OSX with npm version 6.13.7
 Consists of three outer folders; backend, frontend, legacy_project
 ### Frontend folder
 The frontend folder contains a React application which consists of:
-1. app.js
-2. a folder of components
-3. a folder of pages
+1. src
+..1. App.js
+..2. Index.js
+..3. Folder of components
+..4. Folder of pages
+2. public
+3. package.json
 
 
 ## Architecture Decisions
