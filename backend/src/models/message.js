@@ -4,6 +4,7 @@ const messageSchema = new mongoose.Schema({
     author_id:{
         type: ObjectId,
         required: true,
+        ref: 'User'
     },
     text : {
         type: String,

@@ -3,11 +3,13 @@ import mongoose from 'mongoose';
 const followerSchema = new mongoose.Schema({
     who_id : {
         type: ObejctId,
-        required: true
+        required: true,
+        ref: 'User'
     },
     whom_id : {
         type: ObejctId,
-        required: true
+        required: true,
+        ref: 'User'
     }
 })
 
