@@ -28,3 +28,7 @@ responsible for dealing with the database layer in an abstract manner for cleane
 
 ### Project tests
 All tests are located at `/tests/`. Currently, there is only a postman request collection, and no test-suite.
+
+### Needed installations
+You have to install MongoDB to use it, follow the steps here:
+https://tecadmin.net/install-mongodb-on-ubuntu/
