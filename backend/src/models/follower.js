@@ -2,11 +2,11 @@ import mongoose from 'mongoose';
 
 const followerSchema = new mongoose.Schema({
     who_id : {
-        type: String,
+        type: ObejctId,
         required: true
     },
     whom_id : {
-        type: String,
+        type: ObejctId,
         required: true
     }
 })

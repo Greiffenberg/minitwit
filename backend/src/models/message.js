@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 const messageSchema = new mongoose.Schema({
     author_id:{
-        type: String,
+        type: ObjectId,
         required: true,
     },
     text : {
@@ -13,9 +13,9 @@ const messageSchema = new mongoose.Schema({
         trim: true
     },
     pub_date:{
-        type: Number,
-        required: true,
-        min: 0
+        type: Date,
+        default: Date.now,
+        required: true
     },
     flagged : {
         type: Boolean,
