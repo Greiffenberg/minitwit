@@ -1,6 +1,30 @@
-# MiniTwit Project - Group "LearnIT > GitHub"
+# MiniTwit Backend project
+This project is the backend rest API for the MiniTwit MERN stack project.
 
-### Legacy project
-Located in the subdirectory: ```legacy_project``
-The original code, running on python flask - refactored to run on linux 18_04 distros.
+### Setup and operations
 
+To run the project, run `npm install`
+
+If you do not have Nodemon installed, please do so by running:
+```bash
+npm install nodemon
+```
+
+To start the application, run ```npm start```.
+
+This will launch the project on localhost:3005, using Nodemon.
+
+### Project structure
+The main application is hosted from the `api.minitwit.js` file, using node and express.js.
+
+The `api-routers.js` manages the direction of all the incoming requests to correct route controllers.
+
+The `dbconnector.js` grants access to database connections and manages the lifetime of such connections and connection pools.
+
+In the `src` folder, the `Controllers` handle specifik buissness logic controls and request/response tasks.
+
+Also in `src`, the `DatabaseActions` provides some database action and request helper functions, 
+responsible for dealing with the database layer in an abstract manner for cleaner database refactoring or replacement.
+
+### Project tests
+All tests are located at `/tests/`. Currently, there is only a postman request collection, and no test-suite.
