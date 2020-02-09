@@ -1,8 +1,9 @@
 //This code requires mongoose node module
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
 //connecting local mongodb database named test
-var db = mongoose.connect('mongodb://127.0.0.1:27017/test');
+const mongoDB = 'mongodb://127.0.0.1/my_database';
+mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
 
 //testing connectivity
 mongoose.connection.once('connected', function() {
