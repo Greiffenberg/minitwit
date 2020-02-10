@@ -39,4 +39,12 @@ Vi har PT en test MongoDB hosted på free tier hos Atlas:
 https://cloud.mongodb.com/v2/5e41a597014b76a14ab74984#clusters
 User: OneDevOpsUser
 Pass: OneDevOpsPassword
-(The stuff above should of course never be in a readme, but here they are for you to read)
+
+Compas connectstring:
+mongodb+srv://OneDevOpsUser:<password>@cluster0-kjjf5.mongodb.net/test
+
+MongoDB Compas can be downloaded here:
+https://downloads.mongodb.com/compass/mongodb-compass-community_1.20.5_amd64.deb
+(After download just click to install)
+
+(The stuff above should of course never be in a readme, but here they are for you to read. Will move to Wiki later)
