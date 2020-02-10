@@ -6,8 +6,9 @@ export default function Register() {
     const [password, setPassword] = useState(null);
     const [passwordCheck, setPasswordCheck] = useState(null);
 
-    function submitForm() {
-        if (password === passwordCheck && password !== null) {
+    function submitForm(e) {
+        e.preventDefault();
+        if (password === passwordCheck && !!password) {
             console.log('Calling API')
         } else {
             console.log('Passwords did not match')
@@ -17,7 +18,7 @@ export default function Register() {
     return(
         <div className="register-container">
             <h2>Sign up</h2>
-            <form action="" method='post'>
+            <form action="" method='POST' onSubmit={(e) => submitForm(e)}>
                 <dl>
                     Username:
                     <input type='text' name='username' value={username} onChange={(e) => setUsername(e.target.value)}/> <br/>
@@ -28,7 +29,7 @@ export default function Register() {
                     Password <small>(repeat)</small>:
                     <input className="login-input-password" type='password' name='passwordCheck' value={passwordCheck} onChange={(e) => setPasswordCheck(e.target.value)}/> <br/>
                 </dl>
-                <div className="actions"/><input type="submit" onSubmit={() => submitForm()}/>
+                <div className="actions"/><input type="submit" value="Sign Up"/>
             </form>
         </div>
     );
