@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 
 const followerSchema = new mongoose.Schema({
     who_id : {
