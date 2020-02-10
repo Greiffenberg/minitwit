@@ -40,7 +40,7 @@ Check version of npm - make sure you have latest stable
 Create create app via npm script
 ```console
 $ npm --version
-$ npm init react-app MiniTwit
+$ npm init react-app minitwit
 ```
 The React app creation in this project was done on OSX with npm version 6.13.7
 
