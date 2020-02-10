@@ -15,9 +15,9 @@ export default function(){
             <form action="" method='post'>
                 <dl>
                     Username:
-                    <input type='text' name='username' value={(e) => setUsername(e.target.value)}/> <br/>
+                    <input type='text' name='username' value={username} onChange={(e) => setUsername(e.target.value)}/> <br/>
                     Password:
-                    <input className="login-input-password" type='password' name='password' value={(e) => setPassword(e.target.value)}/>
+                    <input className="login-input-password" type='password' name='password' value={password} onChange={(e) => setPassword(e.target.value)}/>
                 </dl>
                 <div className="actions"/><input type="submit" value="Sign In"/>
             </form>
