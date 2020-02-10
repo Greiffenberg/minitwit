@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import '../../style.css';
 
-export default function(){
+export default function Login(){
     //Javascript logic
     const [username, setUsername] = useState(null);
     const [password, setPassword] = useState(null);
@@ -22,5 +22,5 @@ export default function(){
                 <div className="actions"/><input type="submit" value="Sign In"/>
             </form>
         </div>
-);
+    );
 }
