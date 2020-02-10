@@ -32,3 +32,11 @@ All tests are located at `/tests/`. Currently, there is only a postman request c
 ### Needed installations
 You have to install MongoDB to use it, follow the steps here:
 https://tecadmin.net/install-mongodb-on-ubuntu/
+
+### Database
+bla-bla-bla
+Vi har PT en test MongoDB hosted på free tier hos Atlas:
+https://cloud.mongodb.com/v2/5e41a597014b76a14ab74984#clusters
+User: OneDevOpsUser
+Pass: OneDevOpsPassword
+(The stuff above should of course never be in a readme, but here they are for you to read)
