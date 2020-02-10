@@ -5,17 +5,12 @@ export default function Register() {
     const [email, setEmail] = useState(null);
     const [password, setPassword] = useState(null);
     const [passwordCheck, setPasswordCheck] = useState(null);
-    const [passMatch, setPassMatch] = useState(false);
 
-    function checkPassword(e) {
-        setPasswordCheck(e.target.value);
-
-        if (password === passwordCheck) {
-            console.log("Passwords match");
-
-        } else if (passwordCheck.length > 0) {
-                console.log("Passwords does not match");
-                setPassMatch(true);
+    function submitForm() {
+        if (password === passwordCheck && password !== null) {
+            console.log('Calling API')
+        } else {
+            console.log('Passwords did not match')
         }
     }
 
@@ -31,10 +26,9 @@ export default function Register() {
                     Password:
                     <input className="login-input-password" type='password' name='password' value={password} onChange={(e) => setPassword(e.target.value)}/> <br/>
                     Password <small>(repeat)</small>:
-                    <input className="login-input-password" type='password' name='passwordCheck' value={passwordCheck} onChange={(e) => checkPassword(e)}/>
-                    {passMatch && <p>Passwords does not match</p>}
+                    <input className="login-input-password" type='password' name='passwordCheck' value={passwordCheck} onChange={(e) => setPasswordCheck(e.target.value)}/> <br/>
                 </dl>
-                <div className="actions"/><input type="submit" value="Sign In"/>
+                <div className="actions"/><input type="submit" onSubmit={() => submitForm()}/>
             </form>
         </div>
     );
