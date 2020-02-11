@@ -27,6 +27,24 @@ input[type="password"] {
     margin-left: 4px;
 }
 
+.timeline-tweet-container{
+    background-color: #aa8838;
+    border: 1px solid black;
+    margin-bottom: 10px;
+    min-width: 150px;
+    max-width: 400px;
+}
+
+.timeline-tweet-form{
+    margin-bottom: 30px;
+}
+
+.timeline-tweet-input-field{
+    min-height: 100px;
+    min-width: 400px;
+    margin-bottom: 20px;
+}
+
 input[type="submit"] {
     background: #105751;
     border: 1px solid #073B36;
