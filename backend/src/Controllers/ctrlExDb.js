@@ -30,18 +30,19 @@ exports.users = async (req, res) => {
 exports.createUser = async (req, res) =>  {
 
     // Extract some parameters from my body
-    let { name, value } = req.body;
+    let { name, email, password } = req.body;
+    const user = {name, email, password};
 
     // Verify that the name is present and sufficient
     if (name || name.length < 2) {
         console.log(req.body);
-        return res.status(400).json({error: true, message: 'The example requires a name of length atleast 2.'})
+        return res.status(400).json({error: true, message: 'Invalid user-name'})
     }
 
     // Very that the value is present and non-negative
-    if (!value || value < 0){
+    if (!email){
         console.log(req.body);
-        return res.status(400).json({error: true, message: 'The example requires a value of minimum 0.0'})
+        return res.status(400).json({error: true, message: 'Invalid email'})
     }
 
     try{
