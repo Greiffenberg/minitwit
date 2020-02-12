@@ -1,7 +1,7 @@
 {   
     "_COMMENT1": "PASSWORDS should never be here, but we are just testing",
     "db_mongo_remote_ip": "mongodb+srv://OneDevOpsUser:OneDevOpsPassword@cluster0-kjjf5.mongodb.net/test",
-    "db_mongo_local_test_ip": "mongodb://127.0.0.1/my_database",
+    "db_mongo_local_ip": "mongodb://127.0.0.1/my_database",
     "db_use_local": "true",
     "db_use_mongodb": "true"
 }
