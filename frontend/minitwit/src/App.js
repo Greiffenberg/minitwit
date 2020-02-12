@@ -11,6 +11,7 @@ function App() {
   return (
       <Router>
           <TopNav/>
+          <Route exact path = "/" render={() => <Timeline/>} />
           <Route exact path = "/login" render={() => <Login/>} />
           <Route exact path = "/register" render={() => <Register/>} />
           <Route exact path = "/timeline" render={() => <Timeline/>} />
