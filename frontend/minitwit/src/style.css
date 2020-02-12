@@ -57,6 +57,24 @@ input[type="password"] {
     margin-bottom: 20px;
 }
 
+.timeline-api-data-object{
+    background-color: #a8766c;
+    min-width: 400px;
+    max-width: 400px;
+
+    padding: 15px;
+    margin-top: 10px;
+}
+
+.timeline-read-api-button{
+    margin-top: 15px;
+    padding: 5px;
+    background: #105751;
+    border: 2px solid #073B36;
+    color: white;
+    font-size: 15px;
+}
+
 .nav-element{
     margin-right: 10px;
 }
