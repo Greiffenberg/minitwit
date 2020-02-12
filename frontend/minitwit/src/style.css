@@ -1,4 +1,5 @@
 body {
+    padding: 15px;
     background: #CAECE9;
     font-family: 'Trebuchet MS', sans-serif;
     font-size: 14px;
@@ -27,6 +28,17 @@ input[type="password"] {
     margin-left: 4px;
 }
 
+.register-input-username{
+    margin-left: 42px;
+}
+.register-input-email{
+    margin-left: 66px;
+    width: 139px;
+}
+.register-input-password{
+    margin-left: 47px;
+}
+
 .timeline-tweet-container{
     background-color: #aa8838;
     border: 1px solid black;
@@ -43,6 +55,10 @@ input[type="password"] {
     min-height: 100px;
     min-width: 400px;
     margin-bottom: 20px;
+}
+
+.nav-element{
+    margin-right: 10px;
 }
 
 input[type="submit"] {

@@ -22,13 +22,13 @@ export default function Register() {
             <form action="" method='POST' onSubmit={(e) => submitForm(e)}>
                 <dl>
                     Username:
-                    <input type='text' name='username' value={username} onChange={(e) => setUsername(e.target.value)}/> <br/>
+                    <input className="register-input-username" type='text' name='username' value={username} onChange={(e) => setUsername(e.target.value)}/> <br/>
                     E-mail:
-                    <input type='email' name='email' value={email} onChange={(e) => setEmail(e.target.value)}/> <br/>
+                    <input className="register-input-email" type='email' name='email' value={email} onChange={(e) => setEmail(e.target.value)}/> <br/>
                     Password:
-                    <input className="login-input-password" type='password' name='password' value={password} onChange={(e) => setPassword(e.target.value)}/> <br/>
+                    <input className="register-input-password" type='password' name='password' value={password} onChange={(e) => setPassword(e.target.value)}/> <br/>
                     Password <small>(repeat)</small>:
-                    <input className="login-input-password" type='password' name='passwordCheck' value={passwordCheck} onChange={(e) => setPasswordCheck(e.target.value)}/> <br/>
+                    <input className="register-input-password-repeat" type='password' name='passwordCheck' value={passwordCheck} onChange={(e) => setPasswordCheck(e.target.value)}/> <br/>
                 </dl>
                 <div className="actions"/><input type="submit" value="Sign Up"/>
             </form>
