@@ -1,46 +1,47 @@
-let db = require('../../dbconnector').connection
+const {User} = require('../models/user');
+const globals = require('../config/globals.json');
+const mongoose = require('mongoose');
+// let db = require('../../dbconnector').connection
+
+// CONNECT TO DB
+console.log("log", globals.db_mongo_remote_ip);
+
+//connecting remote mongodb database named test
+const mongoDB = globals.db_mongo_remote_ip;
+mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
+
+//testing connectivity
+mongoose.connection.once('connected', function() {
+    console.log("Database connected successfully")
+});
 
 /** Get all examples */
-exports.examples = async (req, res) => {
+exports.users = async (req, res) => {
     try {
 
-        /** How to do it with the MySQL driver:
-         *  let examples = await db.query('SELECT * FROM Examples')
-         */
+        let users = await User.find({});
 
-            // Some dummy data
-        let examples = [
-                {
-                    id: 1,
-                    name: 'I am an example!!',
-                    value: 150
-                },
-                {
-                    id: 19,
-                    name: 'I am another dummy-example!!',
-                    value: 295.5
-                }
-            ]
+        console.log('user count: ', users.length);
 
         // Return data and statuses to the client
         return res.json({
             error: false,
-            message: "All examples",
-            data: examples
+            message: "All Users",
+            data: users
         })
 
     }catch(error){
         // Return error info and statuses to the client
         return res.json({
             error: true,
-            message: "Failed to retrieve examples!",
+            message: "Failed to retrieve Users!",
             data: error.message
         })
     }
 }
 
 /** Creates a single new example */
-exports.createEx = async (req, res) =>  {
+exports.createUser = async (req, res) =>  {
 
     // Extract some parameters from my body
     let { name, value } = req.body;
@@ -82,7 +83,7 @@ exports.createEx = async (req, res) =>  {
 }
 
 /** Updates a single example name and value */
-exports.updateEx = async (req, res) => {
+exports.updateUser = async (req, res) => {
 
     // Get values from request body
     let {id, name, value } = req.body
@@ -130,7 +131,7 @@ exports.updateEx = async (req, res) => {
 }
 
 /** Deletes a single example */
-exports.deleteEx = async (req, res) => {
+exports.deleteUser = async (req, res) => {
     let { id } = req.body
 
     if(!id) return res.status(400).send({ error: true, message: "Please provide an example id"})
@@ -154,4 +155,6 @@ exports.deleteEx = async (req, res) => {
             data: error.message
         })
     }
+    
 }
+
