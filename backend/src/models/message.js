@@ -26,4 +26,10 @@ const messageSchema = new mongoose.Schema({
 
 const Message = mongoose.model('Message', messageSchema);
 
+function validateMessage(message) {
+    // To be implemented
+    return true;
+}
+
 exports.Message = Message;
+exports.validate = validateMessage;
