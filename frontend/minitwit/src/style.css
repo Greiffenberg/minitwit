@@ -1,4 +1,5 @@
 body {
+    padding: 15px;
     background: #CAECE9;
     font-family: 'Trebuchet MS', sans-serif;
     font-size: 14px;
@@ -43,6 +44,10 @@ input[type="password"] {
     min-height: 100px;
     min-width: 400px;
     margin-bottom: 20px;
+}
+
+.nav-element{
+    margin-right: 10px;
 }
 
 input[type="submit"] {
