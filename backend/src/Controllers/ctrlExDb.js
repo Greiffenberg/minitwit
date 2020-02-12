@@ -1,27 +1,13 @@
 const {User} = require('../models/user');
 const globals = require('../config/globals.json');
 const mongoose = require('mongoose');
-// let db = require('../../dbconnector').connection
-
-// CONNECT TO DB
-console.log("log", globals.db_mongo_remote_ip);
-
-//connecting remote mongodb database named test
-const mongoDB = globals.db_mongo_remote_ip;
-mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
-
-//testing connectivity
-mongoose.connection.once('connected', function() {
-    console.log("Database connected successfully")
-});
+require('../models/connect_to_mongodb');
 
 /** Get all examples */
 exports.users = async (req, res) => {
     try {
 
         let users = await User.find({});
-
-        console.log('user count: ', users.length);
 
         // Return data and statuses to the client
         return res.json({
