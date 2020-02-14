@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-const { User } = require('../../src/models/user');
-const globals = require('../../src/config/globals.json');
+const { User } = require('../../src/DatabaseActions/models/user');
+const { db_mongo_local_ip } = require('../../src/config/globals.json');
 
 
 const testUser = {name: 'OneDevOps', email:'odo@itu.dk', password:'ituaccess'};
@@ -10,16 +10,16 @@ run();
 async function run(){
     await Connect();
     await AddUser(testUser);
-    await DeleteUser(testUser);
+    //await DeleteUser(testUser);
 }
 
 
 // CONNECT TO DB
 async function Connect(){
-    console.log("log", globals.db_mongo_remote_ip);
+    console.log("log", db_mongo_local_ip);
 
     //connecting remote mongodb database named test
-    const mongoDB = globals.db_mongo_remote_ip;
+    const mongoDB = db_mongo_local_ip;
     mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
 
     //testing connectivity

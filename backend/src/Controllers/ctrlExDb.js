@@ -1,13 +1,13 @@
-const {User} = require('../models/user');
-const globals = require('../config/globals.json');
+const {User} = require('../DatabaseActions/models/user');
+const {db_mongo_local_ip} = require('../config/globals.json');
 const mongoose = require('mongoose');
 // let db = require('../../dbconnector').connection
 
 // CONNECT TO DB
-console.log("log", globals.db_mongo_remote_ip);
+console.log("log", db_mongo_local_ip);
 
 //connecting remote mongodb database named test
-const mongoDB = globals.db_mongo_remote_ip;
+const mongoDB = db_mongo_local_ip;
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
 
 //testing connectivity

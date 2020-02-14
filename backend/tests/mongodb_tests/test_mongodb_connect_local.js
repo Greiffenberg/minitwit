@@ -1,9 +1,9 @@
 //This code requires mongoose node module
 const mongoose = require('mongoose');
-const globals = require('../../src/config/globals.json');
+const {db_mongo_local_ip} = require('../../src/config/globals.json');
 
 //connecting local mongodb database named test
-const mongoDB = globals.db_mongo_local_test_ip;
+const mongoDB = db_mongo_local_ip;
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
 
 //testing connectivity
