@@ -28,3 +28,29 @@ responsible for dealing with the database layer in an abstract manner for cleane
 
 ### Project tests
 All tests are located at `/tests/`. Currently, there is only a postman request collection, and no test-suite.
+
+### Needed installations
+You have to install MongoDB to use it, follow the steps here:
+https://tecadmin.net/install-mongodb-on-ubuntu/
+
+### Database
+Use the file /config/globals.json to set what kind of DB you would like to use.
+For MongoDB you can set it to either run it locally (see setup advice below) or remote.
+
+## Remote
+Vi har PT en test MongoDB hosted på free tier hos Atlas:
+https://cloud.mongodb.com/v2/5e41a597014b76a14ab74984#clusters
+User: OneDevOpsUser
+Pass: OneDevOpsPassword
+
+If you use MongoDB Compas (and you should) to check data, use this connectstring:
+mongodb+srv://OneDevOpsUser:password@cluster0-kjjf5.mongodb.net/test
+
+(The stuff above should of course never be in a readme, but here they are for you to read. Will move to Wiki later)
+
+## Local
+MongoDB Compas can be downloaded here:
+https://downloads.mongodb.com/compass/mongodb-compass-community_1.20.5_amd64.deb
+(After download just click to install)
+
+
