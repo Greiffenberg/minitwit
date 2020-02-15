@@ -18,33 +18,34 @@ mongoose.connection.once('connected', function() {
 /** Register a single user in the database */
 exports.register = async (req, res) => {
     try {
+        // Deconstruct and sanitize data
+        let {username, email, pwd} = req.body
+        if(!username || !email | !pwd) {
+            return res.status(400).json({message: "Bad request, data was missing"})
+        }
 
+        // Format insert data for user
+        let newUser = {name: username, email, password: pwd};
+
+        // Insert user in DB
+        await User(newUser).save()
+
+        // latest is a global var
+        latest = !!req.query.latest ? req.query.latest : latest
+
+        // Return success and latest
+        return res.status(200).json({message: "User was created!", latest: latest})
     } catch (error){
-        return res.status(500).json({error})
+
+        // Check for duplicate entry
+        let msg = error.code === 11000 ? "Email address already in use" : "Failed to register user"
+        
+        // Return error and message
+        return res.status(500).json({message: msg})
     }
 }
 
-/** Get all users */
-exports.users = async (req, res) => {
-    try {
-
-        let users = await User.find({});
-
-        console.log('user count: ', users.length);
-
-        // Return data and statuses to the client
-        return res.json({
-            error: false,
-            message: "All Users",
-            data: users
-        })
-
-    }catch(error){
-        // Return error info and statuses to the client
-        return res.json({
-            error: true,
-            message: "Failed to retrieve Users!",
-            data: error.message
-        })
-    }
+/** Return the latest global value */
+exports.latest = async (req, res) => {
+    return res.status(200).json({latest: latest})
 }

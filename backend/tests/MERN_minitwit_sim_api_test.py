@@ -6,7 +6,7 @@ import requests
 from contextlib import closing
 
 
-BASE_URL = 'http://127.0.0.1:5001'
+BASE_URL = 'http://127.0.0.1:3005'
 DATABASE = "/tmp/minitwit.db"
 USERNAME = 'simulator'
 PWD = 'super_safe!'
@@ -23,11 +23,6 @@ def init_db():
         with open("schema.sql") as fp:
             db.cursor().executescript(fp.read())
         db.commit()
-
-
-# Empty the database and initialize the schema again
-os.system(f'rm {DATABASE}')
-init_db()
 
 def test_latest():
     # post something to updaet LATEST

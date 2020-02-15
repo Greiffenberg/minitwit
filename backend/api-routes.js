@@ -2,6 +2,7 @@
 // Initialize express router
 let router = require('express').Router()
 
+latest = 0
 
 /** CRUD Example ------------------------------- */
 let ctrlEx = require('./src/Controllers/ctrlEx')
@@ -25,6 +26,12 @@ router.route('/users').post(ctrlExDb.createUser)
 router.route('/users').put(ctrlExDb.updateUser)
 // Delete
 router.route('/users').delete(ctrlExDb.deleteUser)
+
+/** SIMULATOR API ENDPOINTS */
+let ctrlUser = require('./src/Controllers/ctrlUser') 
+
+router.route('/latest').get(ctrlUser.latest)
+router.route('/register').post(ctrlUser.register)
 
 // Export API routes
 module.exports = router;
