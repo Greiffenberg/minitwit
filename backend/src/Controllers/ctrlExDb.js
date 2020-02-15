@@ -1,7 +1,6 @@
 const {User} = require('../DatabaseActions/models/user');
 const {db_mongo_local_ip} = require('../config/globals.json');
 const mongoose = require('mongoose');
-// let db = require('../../dbconnector').connection
 
 // CONNECT TO DB
 console.log("log", db_mongo_local_ip);
