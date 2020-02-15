@@ -15,9 +15,10 @@ mongoose.connection.once('connected', function() {
 
 /**********************************************************/
 
+/** Register a single user in the database */
 exports.register = async (req, res) => {
     try {
-        
+
     } catch (error){
         return res.status(500).json({error})
     }
