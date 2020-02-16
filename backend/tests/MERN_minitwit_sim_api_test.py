@@ -25,19 +25,20 @@ def init_db():
         db.commit()
 
 def test_latest():
-    # post something to updaet LATEST
+    # post something to update LATEST
     print("TESTING: test_latest")
     url = f"{BASE_URL}/register"
-    data = {'username': 'test', 'email': 'test@test', 'pwd': 'foo'}
-    params = {'latest': 1337}
+    data = {'username': 'test', 'email': 'test@test8', 'pwd': 'foo'}
     response = requests.post(url, data=json.dumps(data),
                              params=params, headers=HEADERS)
     assert response.ok
+    # Will crash here, if the email is already in use
 
     # verify that latest was updated
     url = f'{BASE_URL}/latest'
     response = requests.get(url, headers=HEADERS)
     assert response.ok
+    print(response.json())
     assert response.json()['latest'] == 1337
     print("PASSED: test_latest")
 
