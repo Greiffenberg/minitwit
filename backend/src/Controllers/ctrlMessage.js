@@ -33,7 +33,7 @@ exports.createMsg = async (req, res) => {
 exports.readMsgs = async (req, res) => {
     
     // Deconstruct the maximum number of returned messages from the query params
-    let { no } = req.query.no
+    // let { no } = req.query.no
 
     // update latest - latest is a global var
     latest = !!req.query.latest ? req.query.latest : latest
