@@ -7,7 +7,6 @@ from contextlib import closing
 
 
 BASE_URL = 'http://127.0.0.1:3005'
-DATABASE = "/tmp/minitwit.db"
 USERNAME = 'simulator'
 PWD = 'super_safe!'
 CREDENTIALS = ':'.join([USERNAME, PWD]).encode('ascii')
@@ -16,19 +15,17 @@ HEADERS = {'Connection': 'close',
            'Content-Type': 'application/json',
            f'Authorization': f'Basic {ENCODED_CREDENTIALS}'}
 
-
-def init_db():
-    """Creates the database tables."""
-    with closing(sqlite3.connect(DATABASE)) as db:
-        with open("schema.sql") as fp:
-            db.cursor().executescript(fp.read())
-        db.commit()
+def clear_test_db():
+    url = f"{BASE_URL}/clear_db"
+    response = requests.get(url, headers=HEADERS)
+    print("TEST DB CLEARED / INITIALIZED")
 
 def test_latest():
     # post something to update LATEST
     print("TESTING: test_latest")
     url = f"{BASE_URL}/register"
-    data = {'username': 'test', 'email': 'test@test8', 'pwd': 'foo'}
+    data = {'username': 'test', 'email': 'test@test', 'pwd': 'foo'}
+    params = {'latest': 1337}
     response = requests.post(url, data=json.dumps(data),
                              params=params, headers=HEADERS)
     assert response.ok
@@ -38,7 +35,6 @@ def test_latest():
     url = f'{BASE_URL}/latest'
     response = requests.get(url, headers=HEADERS)
     assert response.ok
-    print(response.json())
     assert response.json()['latest'] == 1337
     print("PASSED: test_latest")
 
@@ -207,6 +203,9 @@ def test_a_unfollows_b():
     response = requests.get(f'{BASE_URL}/latest', headers=HEADERS)
     assert response.json()['latest'] == 11
     print("PASSED: test_a_unfollows_b")
+
+# Init DB and run the tests
+clear_test_db()
 
 test_latest()
 test_register()
