@@ -16,6 +16,7 @@ router.route('/register').post(ctrlUser.register)
 
 let ctrlMsg = require('./src/Controllers/ctrlMessage')
 router.route('/msgs/:username').post(ctrlMsg.createMsg)
+router.route('/msgs/:username').get(ctrlMsg.readMsgs)
 
 // Export API routes
 module.exports = router;
