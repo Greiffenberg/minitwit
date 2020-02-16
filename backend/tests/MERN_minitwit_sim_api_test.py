@@ -28,7 +28,8 @@ def test_latest():
     # post something to update LATEST
     print("TESTING: test_latest")
     url = f"{BASE_URL}/register"
-    data = {'username': 'test', 'email': 'test@test8', 'pwd': 'foo'}
+    data = {'username': 'test', 'email': 'test@test9', 'pwd': 'foo'}
+    params = {'latest': 1337}
     response = requests.post(url, data=json.dumps(data),
                              params=params, headers=HEADERS)
     assert response.ok
