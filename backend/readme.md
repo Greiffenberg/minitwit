@@ -28,3 +28,34 @@ responsible for dealing with the database layer in an abstract manner for cleane
 
 ### Project tests
 All tests are located at `/tests/`. Currently, there is only a postman request collection, and no test-suite.
+
+## Database setup
+
+If you have not installed MongoDB, see MongoDB Installation below.
+
+### Getting started
+First, run the test_users.js file by command: ```/tests/mongodb_tests/test_user.js```
+If that runs with output, your DB is setup correctly. If not, try to look at the installation guide below.
+
+If you comment out the delete call in ```function run``` in ```test_user.js``` file, the user should be created.
+Comment out the create-call to only delete the user, from your local db.
+
+When a user exists, try to retrieve it by visiting http://localhost:3005/users
+
+### MongoDB installation
+You have to install MongoDB to use it, follow the steps here:
+https://tecadmin.net/install-mongodb-on-ubuntu/
+
+### Freetier online DB at atlast for testing purposes
+https://cloud.mongodb.com/v2/5e41a597014b76a14ab74984#clusters
+User: OneDevOpsUser
+Pass: OneDevOpsPassword
+
+### Compas connector for MongoDB
+
+Module connection string:
+mongodb+srv://OneDevOpsUser:<password>@cluster0-kjjf5.mongodb.net/test
+
+MongoDB Compas can be downloaded here:
+https://downloads.mongodb.com/compass/mongodb-compass-community_1.20.5_amd64.deb
+(After download just click to install)
