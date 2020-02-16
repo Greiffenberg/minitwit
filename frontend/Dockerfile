@@ -12,4 +12,4 @@ RUN rm -rf node_modules
 
 RUN npm i -g serve
 
-CMD (cd /build && serve -l 80)
+CMD (cd /build && serve -l --single 80)
