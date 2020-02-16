@@ -56,3 +56,20 @@ exports.createMessage = async (message) => {
     await Message(newMsg).save()
     return true
 }
+
+/** Reads some messages by the from som user */
+exports.readMessages = async (username) => {
+
+    // Lookup the author
+    let author = await User.findOne({name: username})
+    
+    // Find the messages
+    let messages = await Message.find({author_id: author._id})
+    
+    // Format the messages to the expected output type
+    messages = messages.map(msg => {
+        return {content: msg.text, user: username}
+    })
+    
+    return messages
+}

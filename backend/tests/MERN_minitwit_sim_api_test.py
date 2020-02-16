@@ -97,7 +97,7 @@ def test_get_latest_user_msgs():
     # verify that latest was updated
     response = requests.get(f'{BASE_URL}/latest', headers=HEADERS)
     assert response.json()['latest'] == 3
-    print("PASSE D: test_get_latest_user_msgs")
+    print(">PASSED: test_get_latest_user_msgs")
 
 
 def test_get_latest_msgs():
