@@ -16,4 +16,10 @@ const followerSchema = new mongoose.Schema({
 
 const Follower = mongoose.model('Follower', followerSchema);
 
+function validateFollower(follower) {
+    // To be implemented
+    return null;
+}
+
 exports.Follower = Follower;
+exports.validate = validateFollower;
