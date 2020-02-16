@@ -60,16 +60,32 @@ exports.createMessage = async (message) => {
 /** Reads some messages by the from som user */
 exports.readMessages = async (username) => {
 
-    // Lookup the author
-    let author = await User.findOne({name: username})
-    
-    // Find the messages
-    let messages = await Message.find({author_id: author._id})
-    
-    // Format the messages to the expected output type
-    messages = messages.map(msg => {
-        return {content: msg.text, user: username}
-    })
-    
+    // Init messages
+    let messages = []
+
+    // If a username is given, find only messages by that user
+    if(!!username){
+
+        // Lookup the author
+        let author = await User.findOne({name: username})
+        
+        // Find the messages by the author
+        messages = await Message.find({author_id: author._id})
+     
+        // Format the messages to the expected output type
+        messages = messages.map(msg => {
+            return {content: msg.text, user: username}
+        })
+    } else {
+        // When no username is given, find all the messages and lookup their authors
+        messages = await Message.find({})
+
+        // Map over messages in parallel, and retrieve + format the author data
+        messages = await Promise.all(messages.map(async (msg) => {
+            let author = await User.findOne({_id: msg.author_id})
+            return {content: msg.text, user: author.name}
+        }))
+    }
+
     return messages
 }
