@@ -16,7 +16,6 @@ HEADERS = {'Connection': 'close',
            'Content-Type': 'application/json',
            f'Authorization': f'Basic {ENCODED_CREDENTIALS}'}
 
-
 def init_db():
     """Creates the database tables."""
     with closing(sqlite3.connect(DATABASE)) as db:
@@ -28,7 +27,7 @@ def test_latest():
     # post something to update LATEST
     print("TESTING: test_latest")
     url = f"{BASE_URL}/register"
-    data = {'username': 'test', 'email': 'test@test9', 'pwd': 'foo'}
+    data = {'username': 'test', 'email': 'test@test', 'pwd': 'foo'}
     params = {'latest': 1337}
     response = requests.post(url, data=json.dumps(data),
                              params=params, headers=HEADERS)
@@ -39,7 +38,6 @@ def test_latest():
     url = f'{BASE_URL}/latest'
     response = requests.get(url, headers=HEADERS)
     assert response.ok
-    print(response.json())
     assert response.json()['latest'] == 1337
     print("PASSED: test_latest")
 
