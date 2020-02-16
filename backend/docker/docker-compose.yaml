@@ -1,0 +1,20 @@
+version: '3'
+services:
+  dbserver:
+    image: minitwit/dbserver
+    ports:
+      - 27017:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+  node:
+    image: minitwit/backendserver
+    user: "node"
+    working_dir: /home/node/app
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - ./../:/home/node/app
+    ports:
+      - "3005:3005"
+    command: "npm start"
