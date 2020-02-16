@@ -89,3 +89,29 @@ exports.readMessages = async (username) => {
 
     return messages
 }
+
+/** Some user A follows some user B */
+exports.followUser = async (userA, userB) => {
+
+    userA = await User.find({name: userA})
+    userB = await User.find({name: userB})
+
+    let newFollower = { who_id: userA._id, whom_id: userB._id }
+
+    console.log("here1")
+    await Follower(newFollower).save()
+    console.log("here2")
+    return true
+}
+
+/** Some user A unfollows some user B */
+exports.unfollowUser = async (userA, userB) => {
+
+    userA = await User.find({name: userA})
+    userB = await User.find({name: userB})
+
+    let follower = { who_id: userA._id, whom_id: userB._id }
+
+    await Follower.deleteOne(follower)
+    return true
+}
