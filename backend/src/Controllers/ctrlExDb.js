@@ -1,4 +1,4 @@
-const {User} = require('../models/user');
+const {User, validate} = require('../models/user');
 const globals = require('../config/globals.json');
 const mongoose = require('mongoose');
 require('../models/connect_to_mongodb');
@@ -33,17 +33,15 @@ exports.createUser = async (req, res) =>  {
     let { name, email, password } = req.body;
     const user = {name, email, password};
 
+    err = validate(user);
+
     // Verify that the name is present and sufficient
-    if (name || name.length < 2) {
+    if (err) {
         console.log(req.body);
-        return res.status(400).json({error: true, message: 'Invalid user-name'})
+        console.log('Err: ', err);
+        return res.status(400).json({error: true, message: 'User not valid'})
     }
 
-    // Very that the value is present and non-negative
-    if (!email){
-        console.log(req.body);
-        return res.status(400).json({error: true, message: 'Invalid email'})
-    }
 
     try{
         // Create the example
