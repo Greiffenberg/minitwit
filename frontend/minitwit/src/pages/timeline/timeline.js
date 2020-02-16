@@ -1,8 +1,10 @@
 import React, {useState} from 'react';
+import axios from 'axios';
 import '../../style.css';
 
 export default function Timeline(){
     const [tweetText, setTweetText] = useState(null);
+    const [dataFromAPI, setDataFromAPI] = useState(null);
 
     const [tweetCollection, setTweetCollection] = useState([
         {
@@ -28,6 +30,17 @@ export default function Timeline(){
         },
     ]);
 
+    //Last tested at 12/2-2020 - you need to fire up nodemon server locally to make it work
+    function readTweets(){
+        axios.get("http://localhost:3005/ex").then(res => {
+            setDataFromAPI(res.data.data);
+            console.log(res.data.data);
+        }).catch(error => {
+                console.log(error);
+            }
+        )
+    }
+
     function submitTweet(e){
         e.preventDefault();
 
@@ -51,6 +64,21 @@ export default function Timeline(){
                         <p> Written: {tweet.pub_date} </p>
                     </div>
                 ))
+            }
+            <button className="timeline-read-api-button" onClick={() => readTweets()}>Click for API request</button>
+
+            {
+                !!dataFromAPI && (
+                    <div>
+                        <h3>Data from API:</h3>
+                        {dataFromAPI.map(obj => (
+                            <div className="timeline-api-data-object">
+                                <p> Message: {obj.name} </p>
+                                <p> Value: {obj.value} </p>
+                            </div>
+                        ))}
+                    </div>
+                )
             }
         </div>
     );
