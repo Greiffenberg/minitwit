@@ -1,6 +1,5 @@
 {   
     "_COMMENT1": "PASSWORDS should never be here, but we are just testing",
-    "db_mongo_remote_ip": "mongodb+srv://OneDevOpsUser:OneDevOpsPassword@cluster0-kjjf5.mongodb.net/test",
-    "db_mongo_local_ip": "mongodb://127.0.0.1/my_database",
-    "db_mongo_temp_remote_ip": "mongodb+srv://OneDevOpsUser:OneDevOpsPassword@cluster0-kjjf5.mongodb.net/test?retryWrites=true&w=majority"
+    "db_mongo_production_path": "mongodb+srv://OneDevOpsUser:OneDevOpsPassword@cluster0-kjjf5.mongodb.net/test",
+    "db_mongo_dev_path": "mongodb://127.0.0.1/dev_db_minitwit"
 }

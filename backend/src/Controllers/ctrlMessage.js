@@ -1,20 +1,3 @@
-const mongoose = require('mongoose');
-const { Message } = require('../DatabaseActions/models/message');
-const { db_mongo_local_ip } = require('../config/globals.json');
-
-/******************** CONNECT TO DB ***********************/
-
-console.log("Connecting to database at: ", db_mongo_local_ip);
-
-mongoose.connect(db_mongo_local_ip, { useNewUrlParser: true, useUnifiedTopology: true });
-
-//testing connectivity
-mongoose.connection.once('connected', function() {
-    console.log("Database connected successfully")
-});
-
-/**********************************************************/
-
 /** Create a single message in the database */
 exports.createMsg = async (req, res) => {
     try {

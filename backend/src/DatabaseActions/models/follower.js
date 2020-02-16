@@ -1,13 +1,14 @@
 const mongoose = require('mongoose');
+const ObjectId = mongoose.Schema.Types.ObjectId
 
 const followerSchema = new mongoose.Schema({
     who_id : {
-        type: ObejctId,
+        type: ObjectId,
         required: true,
         ref: 'User'
     },
     whom_id : {
-        type: ObejctId,
+        type: ObjectId,
         required: true,
         ref: 'User'
     }
