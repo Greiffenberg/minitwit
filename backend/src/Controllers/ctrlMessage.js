@@ -29,17 +29,38 @@ exports.createMsg = async (req, res) => {
     }
 }
 
+/** Reads the messages available from all users */
 exports.readMsgs = async (req, res) => {
+    
+    // Deconstruct the maximum number of returned messages from the query params
+    let { no } = req.query.no
+
+    // update latest - latest is a global var
+    latest = !!req.query.latest ? req.query.latest : latest
+
+    let msgs = await readMessages(null)
+
+    return res.status(200).json(msgs)
+}
+
+/** Reads the messages by some user */
+exports.readMsgsFromUser = async (req, res) => {
     try {
 
-        // Deconstruct username from url params
+        // Deconstruct username from url params, and no from the query
         let { username } = req.params
+        let { no } = req.query.no
+
 
         // update latest - latest is a global var
         latest = !!req.query.latest ? req.query.latest : latest
 
         // Get messages from database
         let msgs = await readMessages(username)
+
+        if(!!no && parseInt(no) > 0){
+            msgs = msgs.slice(msgs, no)
+        }
 
         return res.status(200).json(msgs)
     } catch (error){
