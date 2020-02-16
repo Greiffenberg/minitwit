@@ -42,3 +42,17 @@ exports.createUser = async (user) => {
     await User(user).save()
     return true
 }
+
+/** Creates a single message in the db */
+exports.createMessage = async (message) => {
+
+    // Find the author
+    let msgAuthor = await User.findOne({name: message.author})
+    
+    // Format the msg data
+    let newMsg = {author_id: msgAuthor._id, text: message.content}
+    
+    // Insert the message
+    await Message(newMsg).save()
+    return true
+}
