@@ -12,7 +12,7 @@ services:
     user: "node"
     working_dir: /home/node/app
     environment:
-      - NODE_ENV=production
+      - NODE_ENV=docker
     volumes:
       - ./../:/home/node/app
     ports:
