@@ -3,9 +3,12 @@ const { Message } = require('./models/message');
 const { User } = require('./models/user')
 const { Follower } = require('./models/follower')
 
-const { db_mongo_dev_path, db_mongo_production_path } = require('../config/globals.json');
+const { db_mongo_dev_path, db_mongo_production_path, db_mongo_dev_path_docker, timeline_post_limit } = require('../config/globals.json');
 
 let currentDB = production_mode ? db_mongo_production_path : db_mongo_dev_path
+if(process.env.NODE_ENV = 'docker'){
+    currentDB = db_mongo_dev_path_docker;
+}
 
 
 /******************** CONNECT TO DB ***********************/
@@ -78,7 +81,7 @@ exports.readMessages = async (username) => {
         })
     } else {
         // When no username is given, find all the messages and lookup their authors
-        messages = await Message.find({})
+        messages = await Message.find({}).limit(timeline_post_limit)
 
         // Map over messages in parallel, and retrieve + format the author data
         messages = await Promise.all(messages.map(async (msg) => {
