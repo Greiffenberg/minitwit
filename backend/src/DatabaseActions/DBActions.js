@@ -92,3 +92,51 @@ exports.readMessages = async (username) => {
 
     return messages
 }
+
+/** Some user A follows some user B */
+exports.followUser = async (userA, userB) => {
+
+    // Find the object of each user
+    userA = await User.findOne({name: userA})
+    userB = await User.findOne({name: userB})
+
+    // Use their ID's to make a follower relation
+    let newFollower = { who_id: userA._id, whom_id: userB._id }
+
+    // Create the follower
+    await Follower(newFollower).save()
+    return true
+}
+
+/** Some user A unfollows some user B */
+exports.unfollowUser = async (userA, userB) => {
+
+    // Find the object of each user
+    userA = await User.findOne({name: userA})
+    userB = await User.findOne({name: userB})
+
+    // Construct a follower relation object using the ids
+    let follower = { who_id: userA._id, whom_id: userB._id }
+
+    // Find and delete the follower matching the object
+    await Follower.deleteOne(follower)
+    return true
+}
+
+/** Read the followers of some user */
+exports.readFollowers = async (username) => {
+
+    // Find the user object
+    let user = await User.findOne({name: username})
+
+    // Find the follows
+    let follows = await Follower.find({who_id: user._id})
+
+    // For each follower object, find the user and mutate the object into the username
+    let followers = await Promise.all(follows.map(async (folObj) => {
+        let user = await User.findOne({_id: folObj.whom_id})
+        return user.name
+    }))
+
+    return followers
+}
