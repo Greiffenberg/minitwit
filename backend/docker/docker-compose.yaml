@@ -10,11 +10,7 @@ services:
   backendserver:
     image: minitwit/backendserver
     user: "node"
-    working_dir: /home/node/app
     environment:
       - NODE_ENV=docker
-    volumes:
-      - ./../:/home/node/app
     ports:
       - "3005:3005"
-    command: "npm start"
