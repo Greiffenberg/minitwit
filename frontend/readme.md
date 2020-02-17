@@ -34,7 +34,27 @@ $ npm start
 $ npm run build
 ```
 ## Language and Tools
+### React
+#### Create react app
+Check version of npm - make sure you have latest stable
+Create create app via npm script
+```console
+$ npm --version
+$ npm init react-app minitwit
+```
+The React app creation in this project was done on OSX with npm version 6.13.7
 
 ## Folder Structure
+Consists of three outer folders; backend, frontend, legacy_project
+### Frontend folder
+The frontend folder contains a React application which consists of:
+- src
+  - App.js
+  - Index.js
+  - Folder of components
+  - Folder of pages
+- public
+- package.json
+
 
 ## Architecture Decisions

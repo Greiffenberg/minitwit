@@ -7,7 +7,7 @@ A control script has yet to be implemented - see
 ### Frontend project
 Located in the subdirectory: `/frontend/`
 
-This project uses react and can be launched independently of the backend.
+This project uses ReactJS and can be launched independently of the backend.
 
 ### Backend project
 Located in the subdirectory: `/backend/`

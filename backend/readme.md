@@ -52,20 +52,10 @@ User: OneDevOpsUser
 Pass: OneDevOpsPassword
 
 ### Compas connector for MongoDB
-
 Module connection string:
 mongodb+srv://OneDevOpsUser:<password>@cluster0-kjjf5.mongodb.net/test
 
+## Local
 MongoDB Compas can be downloaded here:
 https://downloads.mongodb.com/compass/mongodb-compass-community_1.20.5_amd64.deb
 (After download just click to install)
-
-## Docker
-
-### Frontend
-
-### Backend
-(This will be moved to the WIKI)
-
-To read more about the backendserver docker image:
-https://github.com/nodejs/docker-node/blob/master/README.md#how-to-use-this-image
