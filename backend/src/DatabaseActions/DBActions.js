@@ -6,7 +6,7 @@ const { Follower } = require('./models/follower')
 const { db_mongo_dev_path, db_mongo_production_path, db_mongo_dev_path_docker, timeline_post_limit } = require('../config/globals.json');
 
 let currentDB = production_mode ? db_mongo_production_path : db_mongo_dev_path
-if(process.env.NODE_ENV = 'docker'){
+if(process.env.NODE_ENV === 'docker'){
     currentDB = db_mongo_dev_path_docker;
 }
 
