@@ -3,15 +3,12 @@ const { Message } = require('./models/message');
 const { User } = require('./models/user')
 const { Follower } = require('./models/follower')
 
-const { db_mongo_dev_path, db_mongo_production_path, db_mongo_dev_path_docker, timeline_post_limit } = require('../config/globals.json');
-
-let currentDB = production_mode ? db_mongo_production_path : db_mongo_dev_path
-if(process.env.NODE_ENV === 'docker'){
-    currentDB = db_mongo_dev_path_docker;
-}
+const { timeline_post_limit } = require('../config/globals.json');
 
 
 /******************** CONNECT TO DB ***********************/
+
+let currentDB = getDBString();
 
 console.log("Production mode: ", production_mode)
 
@@ -139,4 +136,22 @@ exports.readFollowers = async (username) => {
     }))
 
     return followers
+}
+
+function getDBString() {
+    let dbPath = "";
+
+    const { db_mongo_dev_path, db_mongo_production_path, db_mongo_dev_path_docker } = require('../config/globals.json');
+
+    switch(process.env.NODE_ENV){
+        case 'docker':
+            dbPath = db_mongo_dev_path_docker;
+            break;
+        case 'production':
+            dbPath = db_mongo_production_path;
+        default:
+            dbPath = db_mongo_dev_path;
+    }
+
+    return dbPath;
 }
