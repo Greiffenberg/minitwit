@@ -1,0 +1,9 @@
+FROM node:10
+
+COPY /minitwit/package*.json ./
+
+RUN npm install
+
+COPY /minitwit .
+
+CMD npm start
