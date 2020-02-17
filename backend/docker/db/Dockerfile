@@ -1,9 +1,0 @@
-FROM mongo:latest
-
-RUN echo 'RUNNING-RUNNIG'
-
-COPY ./db/import_data.sh /docker-entrypoint-initdb.d/
-
-COPY ./db/test_data/ /tmp/dump/
-
-CMD docker-entrypoint.sh mongod
