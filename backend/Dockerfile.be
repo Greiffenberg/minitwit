@@ -1,3 +1,9 @@
 FROM node:latest
 
-CMD npm install -g nodemon
+COPY /minitwit_api ./
+
+RUN npm install -g nodemon
+
+RUN npm install
+
+CMD npm start
