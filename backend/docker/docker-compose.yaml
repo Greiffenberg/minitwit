@@ -7,7 +7,7 @@ services:
     # environment:
       # MONGO_INITDB_ROOT_USERNAME: root
       # MONGO_INITDB_ROOT_PASSWORD: example
-  node:
+  backendserver:
     image: minitwit/backendserver
     user: "node"
     working_dir: /home/node/app
