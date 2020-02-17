@@ -7,10 +7,10 @@ services:
     # environment:
       # MONGO_INITDB_ROOT_USERNAME: root
       # MONGO_INITDB_ROOT_PASSWORD: example
-  backendserver:
-    image: minitwit/backendserver
-    user: "node"
-    environment:
-      - NODE_ENV=docker
-    ports:
-      - "3005:3005"
+  #backendserver:
+  #  image: minitwit/backendserver
+  #  user: "node"
+  #  environment:
+  #    - NODE_ENV=docker
+  #  ports:
+  #    - "3005:3005"
