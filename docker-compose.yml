@@ -1,24 +1,16 @@
 version: '3.5'
 
-networks:
-  main:
-    name: itu-minitwit-network
-
 services:
 
   db:
     image: onedevopsitu/db
     container_name: db
-    networks:
-      - main
     ports:
       - '27017:27017'
 
   backend:
     image: onedevopsitu/backend # ${DOCKER_USERNAME}
     container_name: backend
-    networks:
-      - main
     depends_on:
       - db
     ports:
@@ -27,7 +19,5 @@ services:
   frontend:
     image: onedevopsitu/frontend
     container_name: frontend
-    networks:
-      - main
     ports:
       - '3001:3001'
