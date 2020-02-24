@@ -2,7 +2,7 @@ FROM python:3.7-alpine
 
 RUN mkdir /minitwit-tests
 
-COPY ../backend/minitwit_api/tests/MERN_minitwit_sim_api_test.py /minitwit-tests/
+COPY backend/minitwit_api/tests/MERN_minitwit_sim_api_test.py /minitwit-tests/
 
 WORKDIR /minitwit-tests
 
