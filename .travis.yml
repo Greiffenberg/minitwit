@@ -10,8 +10,8 @@ install:
   - docker --version  # document the version travis is using
 
 stages:
-  - docker_build
-  - test
+  # - docker_build
+  # - test
   - deploy
 
 jobs:
