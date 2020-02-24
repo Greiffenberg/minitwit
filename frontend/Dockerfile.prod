@@ -1,6 +1,6 @@
 FROM node:latest
 
-COPY /minitwit .
+COPY /frontend/minitwit .
 
 RUN npm install
 
