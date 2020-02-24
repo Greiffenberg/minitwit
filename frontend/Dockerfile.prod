@@ -1,10 +1,8 @@
-FROM node:10
+FROM node:latest
 
-COPY /frontend/minitwit/package*.json ./
+COPY /minitwit .
 
 RUN npm install
-
-COPY /frontend/minitwit .
 
 RUN npm run build
 
