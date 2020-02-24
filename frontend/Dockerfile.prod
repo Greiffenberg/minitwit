@@ -1,10 +1,10 @@
 FROM node:10
 
-COPY /minitwit/package*.json ./
+COPY /frontend/minitwit/package*.json ./
 
 RUN npm install
 
-COPY /minitwit .
+COPY /frontend/minitwit .
 
 RUN npm run build
 
