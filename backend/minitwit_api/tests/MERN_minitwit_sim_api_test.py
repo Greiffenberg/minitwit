@@ -7,7 +7,7 @@ from contextlib import closing
 
 #BASE_URL = 'http://104.248.246.24'
 # BASE_URL = 'http://127.0.0.1:3005'
-BASE_URL = 'backend:3005'
+BASE_URL = 'http://backend:3005'
 
 USERNAME = 'simulator'
 PWD = 'super_safe!'
