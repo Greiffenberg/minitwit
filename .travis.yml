@@ -10,33 +10,34 @@ install:
   - docker --version  # document the version travis is using
 
 stages:
-  - docker_build
+  #- docker_build
   - test
   #- deploy
 
 jobs:
   include:
-    - stage: docker_build
-      name: "build and push docker"
-      script:
-        - echo "LOGIN"
-        - echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
-        - echo "BUILD"
-        - docker build -t $DOCKER_USERNAME/frontend:latest . -f frontend/Dockerfile.prod
-        - docker build -t $DOCKER_USERNAME/backend:latest . -f backend/Dockerfile.be
-        - docker build -t $DOCKER_USERNAME/db:latest . -f backend/Dockerfile.db
-        - echo "PUSH"
-        - docker push $DOCKER_USERNAME/frontend:latest
-        - docker push $DOCKER_USERNAME/backend:latest
-        - docker push $DOCKER_USERNAME/db:latest
+    #- stage: docker_build
+    #  name: "build and push docker"
+    #  script:
+    #    - echo "LOGIN"
+    #    - echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
+    #    - echo "BUILD"
+    #    - docker build -t $DOCKER_USERNAME/frontend:latest . -f frontend/Dockerfile.prod
+    #    - docker build -t $DOCKER_USERNAME/backend:latest . -f backend/Dockerfile.be
+    #    - docker build -t $DOCKER_USERNAME/db:latest . -f backend/Dockerfile.db
+    #    - echo "PUSH"
+    #    - docker push $DOCKER_USERNAME/frontend:latest
+    #    - docker push $DOCKER_USERNAME/backend:latest
+    #    - docker push $DOCKER_USERNAME/db:latest
 
     - stage: test
       name: "run tests"
       install: skip
       script:
-        - docker build -t $DOCKER_USERNAME/test -f tests/Dockerfile.test .
-        - yes | docker-compose up -d
-        - docker run -it --rm $DOCKER_USERNAME/test
+        - docker-compose up
+        #- docker build -t $DOCKER_USERNAME/test -f tests/Dockerfile.test .
+        #- yes | docker-compose up -d
+        #- docker run -it --rm $DOCKER_USERNAME/test
 
     #- stage: deploy
     #  name: "deploy new version"
