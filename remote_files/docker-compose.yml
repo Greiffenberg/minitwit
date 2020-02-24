@@ -7,7 +7,7 @@ networks:
 services:
 
   db:
-    image: ${DOCKER_USERNAME}/db
+    image: onedevopsitu/db
     container_name: db
     networks:
       - main
@@ -15,7 +15,7 @@ services:
       - '27017:27017'
 
   backend:
-    image: ${DOCKER_USERNAME}/backend
+    image: onedevopsitu/backend # ${DOCKER_USERNAME}
     container_name: backend
     networks:
       - main
@@ -25,7 +25,7 @@ services:
       - '3005:3005'
 
   frontend:
-    image: ${DOCKER_USERNAME}/frontend
+    image: onedevopsitu/frontend
     container_name: frontend
     networks:
       - main
