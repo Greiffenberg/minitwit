@@ -36,7 +36,7 @@ jobs:
       script:
         - docker build -t $DOCKER_USERNAME/test -f tests/Dockerfile.test .
         - yes | docker-compose up -d
-        - docker run -it --rm --network=itu-minitwit-network $DOCKER_USERNAME/test
+        - docker run -it --rm $DOCKER_USERNAME/test
 
     #- stage: deploy
     #  name: "deploy new version"
