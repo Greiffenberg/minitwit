@@ -10,38 +10,41 @@ install:
   - docker --version  # document the version travis is using
 
 stages:
-  - docker_build
-  - deploy
+  #- docker_build
+  - test
+  #- deploy
 
 jobs:
   include:
-    - stage: docker_build
-      name: "build and push docker"
-      script:
-        - echo "LOGIN"
-        - echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
-        - echo "BUILD"
-        - docker build -t $DOCKER_USERNAME/frontend:latest . -f frontend/Dockerfile.prod
-        - docker build -t $DOCKER_USERNAME/backend:latest . -f backend/Dockerfile.be
-        - docker build -t $DOCKER_USERNAME/db:latest . -f backend/Dockerfile.db
-        - echo "PUSH"
-        - docker push $DOCKER_USERNAME/frontend:latest
-        - docker push $DOCKER_USERNAME/backend:latest
-        - docker push $DOCKER_USERNAME/db:latest
-
-    #- stage: test
-    #  name: "run tests"
-    #  install: skip
+    #- stage: docker_build
+    #  name: "build and push docker"
     #  script:
-    #    - echo "No tests yet"
+    #    - echo "LOGIN"
+    #    - echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
+    #    - echo "BUILD"
+    #    - docker build -t $DOCKER_USERNAME/frontend:latest . -f frontend/Dockerfile.prod
+    #    - docker build -t $DOCKER_USERNAME/backend:latest . -f backend/Dockerfile.be
+    #    - docker build -t $DOCKER_USERNAME/db:latest . -f backend/Dockerfile.db
+    #    - echo "PUSH"
+    #    - docker push $DOCKER_USERNAME/frontend:latest
+    #    - docker push $DOCKER_USERNAME/backend:latest
+    #    - docker push $DOCKER_USERNAME/db:latest
 
-    - stage: deploy
-      name: "deploy new version"
+    - stage: test
+      name: "run tests"
       install: skip
-      # -o flag to get around "add ip to known hosts prompt"
-      script: |
-        ssh -o "StrictHostKeyChecking no" ${MT_USER}@${MT_SERVER} \
-        "source /root/.bashrc && \
-        docker-compose pull && \
-        docker-compose up -d && \
-        ls"
+      script:
+        - docker build -t $DOCKER_USERNAME/test -f Dockerfile.test ./tests
+        - yes | docker-compose up -d
+        - docker run -it --rm --network=itu-minitwit-network $DOCKER_USERNAME/test
+
+    #- stage: deploy
+    #  name: "deploy new version"
+    #  install: skip
+    #  # -o flag to get around "add ip to known hosts prompt"
+    #  script: |
+    #    ssh -o "StrictHostKeyChecking no" ${MT_USER}@${MT_SERVER} \
+    #    "source /root/.bashrc && \
+    #    docker-compose pull && \
+    #    docker-compose up -d && \
+    #    ls"
