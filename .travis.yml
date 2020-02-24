@@ -43,6 +43,5 @@ jobs:
       script: |
         ssh -o "StrictHostKeyChecking no" ${MT_USER}@${MT_SERVER} \
         "source /root/.bashrc && \
-        export $DOCKER_USERNAME=onedevopsitu && \
-        echo $DOCKER_USERNAME && \
-        docker pull $DOCKER_USERNAME/frontend:latest"
+        cd deployment_scripts && \
+        ./deploy_backend_and_db.sh"
