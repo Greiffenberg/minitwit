@@ -3,8 +3,11 @@ FROM python:3.7-alpine
 RUN mkdir /minitwit-tests
 
 COPY backend/minitwit_api/tests/MERN_minitwit_sim_api_test.py /minitwit-tests/
+COPY tests/requirements.txt /minitwit-tests/
 
 WORKDIR /minitwit-tests
+
+RUN pip install -r tests/requirements.txt
 
 EXPOSE 5000
 
