@@ -1,4 +1,7 @@
 # MiniTwit Project - Group "LearnIT > GitHub"
+## Second repo
+This is the second repository of group g in DevOps on ITU.
+The first one has 4 release. This repo therefore starts with release 0.5.
 
 ## Controlling the project
 A control script has yet to be implemented - see
