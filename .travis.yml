@@ -11,6 +11,7 @@ install:
 
 stages:
   - docker_build
+  - test
   - deploy
 
 jobs:
@@ -29,11 +30,13 @@ jobs:
         - docker push $DOCKER_USERNAME/backend:latest
         - docker push $DOCKER_USERNAME/db:latest
 
-    #- stage: test
-    #  name: "run tests"
-    #  install: skip
-    #  script:
-    #    - echo "No tests yet"
+    - stage: test
+      name: "run tests"
+      install: skip
+      script:
+        - docker build -t $DOCKER_USERNAME/test -f tests/Dockerfile.test .
+        - yes | docker-compose up -d
+        - docker run -it --rm --network=itu-minitwit-network $DOCKER_USERNAME/test
 
     - stage: deploy
       name: "deploy new version"
