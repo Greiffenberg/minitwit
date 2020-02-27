@@ -6,12 +6,14 @@ services:
   backend:
     image: onedevopsitu/backend # ${DOCKER_USERNAME}
     container_name: backend
+    restart: always
     network_mode: host
     ports:
       - '3005:3005'
   frontend:
     image: onedevopsitu/frontend
     container_name: frontend
+    restart: always
     networks:
       - main
     ports:
