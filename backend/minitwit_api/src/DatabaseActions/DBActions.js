@@ -149,6 +149,7 @@ function getDBString() {
             break;
         case 'production':
             dbPath = db_mongo_production_path;
+            break;
         default:
             dbPath = db_mongo_dev_path;
     }
