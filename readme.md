@@ -1,8 +1,6 @@
 # MiniTwit Project - Group "LearnIT > GitHub"
 ## Second repo
-This is the second repository of group g in DevOps on ITU.
-https://github.itu.dk/mahn/OneDevOps <br/>
-The first one has 4 release. This repo therefore starts with release 0.5.
+We are using [Travis-CI](https://github.itu.dk/mahn/OneDevOps/wiki/Travis-CI) to run our pipeline, but since Travis-CI can only connect and watch private repo's we have a second private repo, where the code from the master branch in this public repo is pushed to in our deply script
 
 ## Controlling the project
 A control script has yet to be implemented - see
