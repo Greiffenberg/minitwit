@@ -154,5 +154,5 @@ function getDBString() {
             dbPath = db_mongo_dev_path;
     }
 
-    return db_mongo_production_path;
+    return dbPath;
 }
