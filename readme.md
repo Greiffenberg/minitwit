@@ -1,4 +1,8 @@
 # MiniTwit Project - Group "LearnIT > GitHub"
+## Second repo
+This is the second repository of group g in DevOps on ITU.
+https://github.itu.dk/mahn/OneDevOps <br/>
+The first one has 4 release. This repo therefore starts with release 0.5.
 
 ## Controlling the project
 A control script has yet to be implemented - see
@@ -21,4 +25,3 @@ The project can be launched independently of the backend.
 Located in the subdirectory: `/legacy_project/`
 
 The original code, running on python flask - refactored to run on linux 18_04 distros.
-
