@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node api.minitwit.js docker",
-    "deploy": "node api.minitwit.js production",
+    "start": "node api.minitwit.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

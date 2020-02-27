@@ -143,8 +143,7 @@ function getDBString() {
 
     const { db_mongo_dev_path, db_mongo_production_path, db_mongo_dev_path_docker } = require('../config/globals.json');
 
-    console.log("Arg env", process.argv[2]);
-    switch(process.argv[2]){
+    switch(process.argv){
         case 'docker':
             dbPath = db_mongo_dev_path_docker;
             break;
@@ -156,5 +155,5 @@ function getDBString() {
             break;
     }
 
-    return dbPath;
+    return db_mongo_dev_path;
 }
