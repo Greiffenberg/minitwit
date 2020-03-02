@@ -1,4 +1,5 @@
 const { createMessage, readMessages } = require('../DatabaseActions/DBActions')
+const {timeline_post_limit} = require('../config/globals')
 
 /** Create a single message in the database */
 exports.createMsg = async (req, res) => {
@@ -49,18 +50,19 @@ exports.readMsgsFromUser = async (req, res) => {
 
         // Deconstruct username from url params, and no from the query
         let { username } = req.params
-        let { no } = req.query.no
+        let { no } = req.query
 
+        console.log(no)
 
         // update latest - latest is a global var
         latest = !!req.query.latest ? req.query.latest : latest
 
-        // Get messages from database
-        let msgs = await readMessages(username)
-
-        if(!!no && parseInt(no) > 0){
-            msgs = msgs.slice(msgs, no)
+        if(!no || parseInt(no) > 0){
+            no = timeline_post_limit
         }
+
+        // Get messages from database
+        let msgs = await readMessages(username, no)
 
         return res.status(200).json(msgs)
     } catch (error){
