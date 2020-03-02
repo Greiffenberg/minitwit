@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# git remote add release https://github.com/DevOpsITU/minitwit.git
+git remote add release https://github.com/DevOpsITU/minitwit.git
 
 git stash
 
