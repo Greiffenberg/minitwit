@@ -34,12 +34,17 @@ exports.createMsg = async (req, res) => {
 exports.readMsgs = async (req, res) => {
     
     // Deconstruct the maximum number of returned messages from the query params
-    // let { no } = req.query.no
+    let { no } = req.query
+
+    if(!(!!no) || parseInt(no) <= 0){
+        no = timeline_post_limit
+    }
+    console.log(no)
 
     // update latest - latest is a global var
     latest = !!req.query.latest ? req.query.latest : latest
 
-    let msgs = await readMessages(null)
+    let msgs = await readMessages(null, no)
 
     return res.status(200).json(msgs)
 }
@@ -52,14 +57,13 @@ exports.readMsgsFromUser = async (req, res) => {
         let { username } = req.params
         let { no } = req.query
 
+        if(!(!!no) || parseInt(no) <= 0){
+            no = timeline_post_limit
+        }
         console.log(no)
 
         // update latest - latest is a global var
         latest = !!req.query.latest ? req.query.latest : latest
-
-        if(!(!!no) || parseInt(no) <= 0){
-            no = timeline_post_limit
-        }
 
         // Get messages from database
         let msgs = await readMessages(username, no)
