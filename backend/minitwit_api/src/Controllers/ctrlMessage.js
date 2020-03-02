@@ -57,7 +57,7 @@ exports.readMsgsFromUser = async (req, res) => {
         // update latest - latest is a global var
         latest = !!req.query.latest ? req.query.latest : latest
 
-        if(!no || parseInt(no) <= 0){
+        if(!(!!no) || parseInt(no) <= 0){
             no = timeline_post_limit
         }
 
