@@ -1,0 +1,1 @@
+docker run -it --rm --network=itu-minitwit-network onedevopsitu/test
