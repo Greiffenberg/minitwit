@@ -1,5 +1,7 @@
 #!/bin/sh
 
+git stash
+
 git checkout master
 git pull
 
