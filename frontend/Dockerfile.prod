@@ -1,10 +1,8 @@
-FROM node:10
+FROM node:latest
 
-COPY /minitwit/package*.json ./
+COPY /frontend/minitwit .
 
 RUN npm install
-
-COPY /minitwit .
 
 RUN npm run build
 
@@ -12,4 +10,4 @@ RUN rm -rf node_modules
 
 RUN npm i -g serve
 
-CMD (cd /build && serve --single -l 80)
+CMD (cd /build && serve --single -l 3001)

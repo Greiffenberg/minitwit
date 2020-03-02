@@ -56,5 +56,16 @@ The frontend folder contains a React application which consists of:
 - public
 - package.json
 
-
 ## Architecture Decisions
+
+## Launching frontend with Docker
+In the root folder of the frontend folder there are three files:
+- Dockerfile.prod (Dockerfile for production)
+- Dockerfile.dev (Dockerfile for development)
+- launch_frontend_devmode.sh (script for launching a frontend container in addition to calling the launch_backend_devmode.sh script)
+
+The Dockerfile for production should be used on the production server. It spawns a container where the fontend is being build in order to serve static content to the user.
+
+The Dockerfile for development should be used locally to develop and test the frontend in a similar environment as production. The environment can vary a bit, for example if the Dockerfile is used on OSX or Microsoft, it will spawn a linux VM that may differ from production linux distro and version. The dependencies of the frontend React project will be the same in the same versions.
+Instead of building and serving static content, the Dockerfile.dev will spawn a webpack-development-server in the container. 
+
