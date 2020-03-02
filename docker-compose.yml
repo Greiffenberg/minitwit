@@ -1,3 +1,6 @@
+# This file is used by Travis-CI for the "test" phase to boot/run the containers for the "test" container
+# This is NOT the file used on the server
+
 version: '3.5'
 
 networks:

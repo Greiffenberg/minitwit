@@ -1,3 +1,5 @@
+# This file is deployed to the server and used by Travis as the final step in "deploy" phase
+
 version: '3.5'
 networks:
   main:
