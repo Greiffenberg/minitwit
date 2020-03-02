@@ -5,7 +5,7 @@ const { createUser, clearLocalDB } = require('../DatabaseActions/DBActions')
 /** Clear the local db - for running unit tests */
 exports.clearLocalDB = async (req, res) => {
     try{
-        if(!production_mode){
+       if (!!process.env.DOCKER_NETWORK && process.env.DOCKER_NETWORK === 'enabled') {
             await clearLocalDB()
             return res.status(204).json()
         }else{
