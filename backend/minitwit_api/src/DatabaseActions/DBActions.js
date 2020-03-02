@@ -68,7 +68,7 @@ exports.readMessages = async (username, no) => {
         let author = await User.findOne({name: username})
         
         // Find the messages by the author
-        messages = await Message.find({author_id: author._id}).limit(no)
+        messages = await Message.find({author_id: author._id}).limit(parseInt(no))
      
         // Format the messages to the expected output type
         messages = messages.map(msg => {
@@ -76,7 +76,7 @@ exports.readMessages = async (username, no) => {
         })
     } else {
         // When no username is given, find all the messages and lookup their authors
-        messages = await Message.find({}).limit(no)
+        messages = await Message.find({}).limit(parseInt(no))
 
         // Map over messages in parallel, and retrieve + format the author data
         messages = await Promise.all(messages.map(async (msg) => {
