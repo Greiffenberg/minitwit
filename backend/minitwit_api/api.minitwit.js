@@ -10,6 +10,9 @@ app.use(bodyParser.urlencoded({ extended: true }))
 const cors = require('cors')
 app.use(cors())
 
+// Read of .env file variables
+require('dotenv').config()
+
 // Import routes and use them for all API routes
 const apiRoutes = require("./api-routes")
 app.use('/', apiRoutes)
