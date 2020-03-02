@@ -10,8 +10,6 @@ const { timeline_post_limit } = require('../config/globals.json');
 
 let currentDB = getDBString();
 
-console.log("Production mode: ", production_mode)
-
 console.log("Absract connecting to database at: ", currentDB)
 
 mongoose.connect(currentDB, { useNewUrlParser: true, useUnifiedTopology: true })
@@ -141,19 +139,16 @@ exports.readFollowers = async (username) => {
 function getDBString() {
     let dbPath = "";
 
-    const { db_mongo_dev_path, db_mongo_production_path, db_mongo_dev_path_docker } = require('../config/globals.json');
+    const { db_mongo_localhost_path, db_mongo_docker_path } = require('../config/globals.json');
 
-    switch(process.argv){
-        case 'docker':
-            dbPath = db_mongo_dev_path_docker;
-            break;
-        case 'production':
-            dbPath = db_mongo_production_path;
-            break;
-        default:
-            dbPath = db_mongo_dev_path;
-            break;
+    console.log(process.env.DOCKER_NETWORK)
+    if (!!process.env.DOCKER_NETWORK && process.env.DOCKER_NETWORK === 'enabled') {
+        dbPath = db_mongo_docker_path;
+    } else {
+        dbPath = db_mongo_localhost_path;
     }
 
-    return db_mongo_dev_path;
+    console.log(dbPath)
+
+    return dbPath;
 }
