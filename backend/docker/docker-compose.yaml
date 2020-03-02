@@ -1,16 +1,17 @@
-version: '3'
+version: '3.5'
+networks:
+  main:
+    name: itu-minitwit-network
 services:
-  dbserver:
-    image: minitwit/dbserver
+  db:
+    image: onedevopsitu/db
+    container_name: db
+    network_mode: host
     ports:
-      - 27017:27017
-    # environment:
-      # MONGO_INITDB_ROOT_USERNAME: root
-      # MONGO_INITDB_ROOT_PASSWORD: example
-  backendserver:
-    image: minitwit/backendserver
-    user: "node"
-    environment:
-      - NODE_ENV=docker
+      - '27017:27017'
+  backend:
+    image: onedevopsitu/backend # ${DOCKER_USERNAME}
+    container_name: backend
+    network_mode: host
     ports:
-      - "3005:3005"
+      - '3005:3005'

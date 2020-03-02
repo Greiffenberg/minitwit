@@ -15,7 +15,7 @@ services:
       - '27017:27017'
 
   backend:
-    image: onedevopsitu/backend # ${DOCKER_USERNAME}
+    image: onedevopsitu/backend
     container_name: backend
     networks:
       - main
@@ -23,6 +23,8 @@ services:
       - db
     ports:
       - '3005:3005'
+    environment:
+      - DOCKER_NETWORK=enabled
 
   frontend:
     image: onedevopsitu/frontend
