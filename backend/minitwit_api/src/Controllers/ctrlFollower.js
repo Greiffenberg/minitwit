@@ -17,7 +17,7 @@ exports.getFollowers = async (req, res) => {
         // Limit the output to the max no
         if(!!no && no > 0) follows = follows.splice(0, no)
 
-        return res.status(200).json({follows: follows, latest})
+        return res.status(204).json({follows: follows, latest})
     } catch (error) {
         console.log(error)
         return res.status(500).json({message: "Failed to find users"})
@@ -42,14 +42,14 @@ exports.handleFollow = async (req, res) => {
         if(!!follow && follow.length > 0){
             targetUser = follow
             await followUser(username, targetUser)
-            return res.status(200).json({latest: latest})
+            return res.status(204).json({latest: latest})
         }
 
         // If unfollow is in the data, unfollow that user
         if(!!unfollow || unfollow.length > 0){
             targetUser = unfollow
             await unfollowUser(username, targetUser)
-            return res.status(200).json({latest: latest})
+            return res.status(204).json({latest: latest})
         }
 
         // If it got here, hasnt returned a valid request yet
