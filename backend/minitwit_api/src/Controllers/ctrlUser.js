@@ -51,5 +51,5 @@ exports.register = async (req, res) => {
 
 /** Return the latest global value */
 exports.latest = async (req, res) => {
-    return res.status(204).json({latest: Number(latest)})
+    return res.status(200).json({latest: Number(latest)})
 }

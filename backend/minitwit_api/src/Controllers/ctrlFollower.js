@@ -17,7 +17,7 @@ exports.getFollowers = async (req, res) => {
         // Limit the output to the max no
         if(!!no && no > 0) follows = follows.splice(0, no)
 
-        return res.status(204).json({follows: follows, latest})
+        return res.status(200).json({follows: follows, latest})
     } catch (error) {
         console.log(error)
         return res.status(500).json({message: "Failed to find users"})
