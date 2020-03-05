@@ -19,7 +19,7 @@ exports.createMsg = async (req, res) => {
         latest = !!req.query.latest ? req.query.latest : latest
 
         // Return success and latest
-        return res.status(200).json({message: "Message was created!", latest: Number(latest)})
+        return res.status(204).json({message: "Message was created!", latest: Number(latest)})
     } catch (error){
 
         // Log and return an error
@@ -46,7 +46,7 @@ exports.readMsgs = async (req, res) => {
 
     let msgs = await readMessages(null, no)
 
-    return res.status(200).json(msgs)
+    return res.status(204).json(msgs)
 }
 
 /** Reads the messages by some user */
@@ -68,7 +68,7 @@ exports.readMsgsFromUser = async (req, res) => {
         // Get messages from database
         let msgs = await readMessages(username, no)
 
-        return res.status(200).json(msgs)
+        return res.status(204).json(msgs)
     } catch (error){
 
         // Log and return an error
