@@ -35,7 +35,7 @@ exports.register = async (req, res) => {
         latest = !!req.query.latest ? req.query.latest : latest
 
         // Return success and latest
-        return res.status(200).json({message: "User was created!", latest: Number(latest)})
+        return res.status(204).json({message: "User was created!", latest: Number(latest)})
     } catch (error){
 
         // Check for duplicate entry
@@ -51,5 +51,5 @@ exports.register = async (req, res) => {
 
 /** Return the latest global value */
 exports.latest = async (req, res) => {
-    return res.status(200).json({latest: Number(latest)})
+    return res.status(204).json({latest: Number(latest)})
 }
