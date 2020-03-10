@@ -1,3 +1,4 @@
+const promBundle = require("express-prom-bundle");
 const express = require('express')
 const app = express()
 
