@@ -45,6 +45,15 @@ services:
     networks:
       - main
 
+  node-exporter:
+    image: prom/node-exporter:latest
+    container_name: node-exporter
+    networks:
+      - main
+    ports:
+      - 9100:9100
+    restart: always
+
 
   grafana:
     image: onedevopsitu/grafana
