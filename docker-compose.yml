@@ -34,3 +34,31 @@ services:
     container_name: frontend
     ports:
       - '3001:3001'
+
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    volumes:
+      - ./monitoring/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"
+    networks:
+      - main
+
+  node-exporter:
+    image: prom/node-exporter:latest
+    container_name: node-exporter
+    networks:
+      - main
+    ports:
+      - 9100:9100
+    restart: always
+
+
+  grafana:
+    image: onedevopsitu/grafana
+    container_name: grafana
+    ports:
+      - "3000:3000"  
+    networks:
+      - main
