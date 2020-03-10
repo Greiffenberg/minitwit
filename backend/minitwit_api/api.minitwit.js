@@ -2,6 +2,10 @@ const promBundle = require("express-prom-bundle");
 const express = require('express')
 const app = express()
 
+// Metrics for prometheus monitoring
+const metricsMiddleware = promBundle({includeMethod: true});
+app.use(metricsMiddleware);
+
 // For parsing packet body to js objects by json format
 const bodyParser = require('body-parser')
 app.use(bodyParser.json())
