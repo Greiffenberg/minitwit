@@ -48,3 +48,6 @@ services:
       - "3000:3000"  
     networks:
       - main
+    environment:
+     - GF_SECURITY_ADMIN_USER=Helge&friends
+     - GF_SECURITY_ADMIN_PASSWORD=uiUIui
