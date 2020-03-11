@@ -1,3 +1,3 @@
 FROM prom/prometheus
 
-COPY monitoring/prometheus/prometheus.yml ./etc/prometheus/prometheus.yml
+COPY monitoring/prometheus/prometheus.yml /etc/prometheus/prometheus.yml
