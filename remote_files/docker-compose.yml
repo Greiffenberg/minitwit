@@ -24,6 +24,7 @@ services:
   prometheus:
     image: onedevopsitu/prometheus
     container_name: prometheus
+    restart: always
     ports:
       - "9090:9090"
     networks:
@@ -32,6 +33,7 @@ services:
   node-exporter:
     image: prom/node-exporter:latest
     container_name: node-exporter
+    restart: always
     networks:
       - main
     ports:
@@ -42,8 +44,9 @@ services:
   grafana:
     image: onedevopsitu/grafana
     container_name: grafana
+    restart: always
     ports:
-      - "3000:3000"  
+      - "9111:3000"  
     networks:
       - main
     environment:

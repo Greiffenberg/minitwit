@@ -57,7 +57,7 @@ services:
     image: onedevopsitu/grafana
     container_name: grafana
     ports:
-      - "3000:3000"  
+      - "9111:3000"  
     networks:
       - main
     environment:
