@@ -47,7 +47,7 @@ jobs:
       install: skip
       # -o flag to get around "add ip to known hosts prompt"
       script: |
-        scp -o "StrictHostKeyChecking no" remote_files/docker-compose.yml ${MT_USER}@${MT_SERVER}:/root/test.yml && \
+        scp -o "StrictHostKeyChecking no" remote_files/docker-compose.yml ${MT_USER}@${MT_SERVER}:/root/docker-compose.yml && \
         ssh -o "StrictHostKeyChecking no" ${MT_USER}@${MT_SERVER} \
         "source /root/.bashrc && \
         docker-compose pull && \
