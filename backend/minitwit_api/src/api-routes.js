@@ -5,10 +5,52 @@ let router = require('express').Router()
 // Setting up global values for the API!
 latest = 0
 
+// Set default API url to redirect for Swagger Doc
+router.get('/', (req, res) => {
+    res.redirect('/doc')
+})
+
+// Enables swagger documentation through comments
+const swaggerJsdoc = require('swagger-jsdoc');
+const swaggerUi = require('swagger-ui-express');
+
+// Basic doc options
+const options = {
+    swaggerDefinition: {
+        basePath: 'http://104.248.246.24/api/v1', // Base path (optional)
+        info: {
+            title: 'Minitwit Backend API',
+            version: '1.0.0',
+            description: 'This is the API for the minitwit application and simulation.',
+        },
+    },
+    // List of files to be processes. You can also set globs './routes/*.js'
+    apis: ['api-routes.js'],
+};
+
+const specs = swaggerJsdoc(options);
+
+router.use("/doc", swaggerUi.serve);
+
+router.get("/doc", swaggerUi.setup(specs, { explorer: true }));
+
 /** SIMULATOR API ENDPOINTS */
 
 /** Register new user, get latest var, clear db for testing */
 let ctrlUser = require('./Controllers/ctrlUser')
+/**
+ * General scrabing
+ * @swagger
+ * /latest:
+ *    get:
+ *      description: This should serve the last "latest" given.
+ *
+ *    produces:
+ *       - application/json
+ *    responses:
+ *      200:
+ *        description: number
+ */
 router.route('/latest').get(ctrlUser.latest)
 router.route('/register').post(ctrlUser.register)
 
