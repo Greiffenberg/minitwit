@@ -26,7 +26,7 @@ const User = mongoose.model('User', userSchema);
 
 function validateUser(user) {
     // To be implemented
-    return null;
+    return user;
 }
 
 module.exports.User = User;

@@ -3,9 +3,6 @@ const { Message } = require('./models/message');
 const { User } = require('./models/user')
 const { Follower } = require('./models/follower')
 
-const { timeline_post_limit } = require('../config/globals.json');
-
-
 /******************** CONNECT TO DB ***********************/
 
 let currentDB = getDBString();
@@ -22,18 +19,6 @@ mongoose.connection.once('connected', function() {
 /**********************************************************/
 
 /******************** ABSTRACT DB ACTIONS *****************/
-
-/** Clears all the local db data, made for testing purposes */
-exports.clearLocalDB = async () => {
-    if(!production_mode){
-        await Follower.deleteMany({})
-        await Message.deleteMany({})
-        await User.deleteMany({})
-        return true
-    }else{
-        return false
-    }
-}
 
 /** Creates a single user in the db */
 exports.createUser = async (user) => {
@@ -141,14 +126,11 @@ function getDBString() {
 
     const { db_mongo_localhost_path, db_mongo_docker_path } = require('../config/globals.json');
 
-    console.log(process.env.DOCKER_NETWORK)
     if (!!process.env.DOCKER_NETWORK && process.env.DOCKER_NETWORK === 'enabled') {
         dbPath = db_mongo_docker_path;
     } else {
         dbPath = db_mongo_localhost_path;
     }
-
-    console.log(dbPath)
 
     return dbPath;
 }

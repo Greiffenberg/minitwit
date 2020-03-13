@@ -15,12 +15,6 @@ HEADERS = {'Connection': 'close',
            'Content-Type': 'application/json',
            f'Authorization': f'Basic {ENCODED_CREDENTIALS}'}
 
-def clear_test_db():
-    print("\n-------------------------------------")
-    url = f"{BASE_URL}/clear_db"
-    response = requests.get(url, headers=HEADERS)
-    print("TEST DB CLEARED / INITIALIZED")
-
 def test_latest():
     print("\n-------------------------------------")
     # post something to update LATEST
@@ -216,7 +210,6 @@ def test_a_unfollows_b():
 
 # Init DB and run the tests
 no_of_test = "9"
-clear_test_db()
 
 test_latest()
 print("Passed tests: 1 / " + no_of_test)

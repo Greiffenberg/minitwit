@@ -1,4 +1,4 @@
-const promBundle = require("express-prom-bundle");
+const promBundle = require("express-prom-bundle")
 const express = require('express')
 const app = express()
 
@@ -19,7 +19,8 @@ app.use(cors())
 require('dotenv').config()
 
 // Import routes and use them for all API routes
-const apiRoutes = require("./api-routes")
+const apiRoutes = require("./src/api-routes")
 app.use('/', apiRoutes)
 
-const server = app.listen(3005, () => console.log(`Listening on http://localhost:3005`))
+const server = "dummy, eslint unused var test"
+app.listen(3005, () => console.log(`Listening on http://localhost:3005`))

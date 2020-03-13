@@ -29,7 +29,7 @@ const Message = mongoose.model('Message', messageSchema);
 
 function validateMessage(message) {
     // To be implemented
-    return null;
+    return message;
 }
 
 exports.Message = Message;
