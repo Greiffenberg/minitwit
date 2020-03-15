@@ -1273,7 +1273,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Connections writing",
+      "title": "Connections waiting",
       "type": "gauge"
     },
     {
