@@ -51,6 +51,14 @@ services:
     ports:
       - 9100:9100
 
+  # mongodb-exporter:
+  #   image: bitnami/mongodb-exporter:latest
+  #   container_name: mongodb-exporter
+  #   networks:
+  #     - main
+  #   ports:
+  #     - '9216:9216'
+
 
   grafana:
     image: onedevopsitu/grafana
