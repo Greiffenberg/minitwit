@@ -886,7 +886,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(http_request_duration_seconds_sum[5m])",
+          "expr": "rate(http_request_duration_seconds_sum[5m]) / rate(http_request_duration_seconds_count[5m])",
           "legendFormat": "{{status_code}}",
           "refId": "A"
         }
@@ -1061,7 +1061,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(http_request_duration_seconds_count[1h])",
+          "expr": "(http_request_duration_seconds_count)",
           "format": "time_series",
           "intervalFactor": 1,
           "legendFormat": "{{status_code}}",
@@ -1072,7 +1072,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Total requests (60 min)",
+      "title": "Total requests",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -1421,8 +1421,8 @@
     "list": []
   },
   "time": {
-    "from": "2020-03-15T03:20:37.925Z",
-    "to": "2020-03-15T15:20:37.925Z"
+    "from": "now-6h",
+    "to": "now"
   },
   "timepicker": {
     "refresh_intervals": [
