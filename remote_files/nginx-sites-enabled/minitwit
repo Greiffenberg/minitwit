@@ -29,6 +29,10 @@ server {
       proxy_pass http://localhost:9113/metrics;
     }
 
+    location /mongodb/metrics {
+      proxy_pass http://localhost:9216/metrics;
+    }
+
     # Grab trafic that did not request /api/v1/
     location / {
         # Direct it to the frontend
