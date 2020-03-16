@@ -2,6 +2,8 @@ os: linux
 dist: bionic
 
 language: node_js
+node_js:
+  - 8
 
 services:
   - docker  # required, but travis uses older version of docker :(
