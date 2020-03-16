@@ -25,7 +25,7 @@ const options = {
         },
     },
     // List of files to be processes. You can also set globs './routes/*.js'
-    apis: ['api-routes.js'],
+    apis: ['./src/api-routes.js'],
 };
 
 const specs = swaggerJsdoc(options);
@@ -41,15 +41,26 @@ let ctrlUser = require('./Controllers/ctrlUser')
 /**
  * General scrabing
  * @swagger
- * /latest:
- *    get:
- *      description: This should serve the last "latest" given.
  *
- *    produces:
+ * /login:
+ *   post:
+ *     description: Login to the application
+ *     produces:
  *       - application/json
- *    responses:
- *      200:
- *        description: number
+ *     parameters:
+ *       - name: username
+ *         description: Username to use for login.
+ *         in: formData
+ *         required: true
+ *         type: string
+ *       - name: password
+ *         description: User's password.
+ *         in: formData
+ *         required: true
+ *         type: string
+ *     responses:
+ *       200:
+ *         description: login
  */
 router.route('/latest').get(ctrlUser.latest)
 router.route('/register').post(ctrlUser.register)
