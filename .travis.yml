@@ -19,6 +19,7 @@ jobs:
     - stage: docker_build
       name: "build and push docker"
       script:
+        - bash tests/lint-project.sh || travis_terminate 1;
         - echo "LOGIN"
         - echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
         - echo "BUILD"
