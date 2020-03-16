@@ -38,43 +38,204 @@ router.get("/doc", swaggerUi.setup(specs, { explorer: true }));
 
 /** Register new user, get latest var, clear db for testing */
 let ctrlUser = require('./Controllers/ctrlUser')
+
+router.route('/latest').get(ctrlUser.latest)
 /**
  * General scrabing
  * @swagger
  *
- * /login:
+ * /latest:
+ *   get:
+ *     description: Get latest accepted id
+ *     produces:
+ *       - application/json
+ *     responses:
+ *       200:
+ *         description: latest
+ */
+router.route('/register').post(ctrlUser.register)
+/**
+ * General scrabing
+ * @swagger
+ *
+ * /register:
  *   post:
- *     description: Login to the application
+ *     description: Post new user to register
  *     produces:
  *       - application/json
  *     parameters:
- *       - name: username
- *         description: Username to use for login.
- *         in: formData
- *         required: true
- *         type: string
- *       - name: password
- *         description: User's password.
- *         in: formData
- *         required: true
- *         type: string
+ *           - name: latest
+ *             in: query
+ *             description: latest id sent by simulator api
+ *             required: false
  *     responses:
- *       200:
- *         description: login
+ *       204:
+ *         description: User registered
+ *       400:
+           description: Error on insertion
  */
-router.route('/latest').get(ctrlUser.latest)
-router.route('/register').post(ctrlUser.register)
 
 /** , read all messages, read and create user messages */
 let ctrlMsg = require('./Controllers/ctrlMessage')
 router.route('/msgs/').get(ctrlMsg.readMsgs)
 router.route('/msgs/:username').post(ctrlMsg.createMsg)
 router.route('/msgs/:username').get(ctrlMsg.readMsgsFromUser)
+/**
+ * General scrabing
+ * @swagger
+ *
+ * /msgs:
+ *   get:
+ *     description: Get user messages
+ *     produces:
+ *       - application/json
+ *     parameters:
+ *           - name: Authorization
+ *             in: query
+ *             required: true
+ *           - name: no
+ *             in: query
+ *             description: number_of_messages_to_return
+ *             required: false
+ *           - name: latest
+ *             in: query
+ *             description: latest id sent by simulator api
+ *             required: false
+ *     responses:
+ *       200:
+ *         description: Message created
+ */
+
+/**
+* General scrabing
+* @swagger
+*
+* /msgs/{username}:
+*   get:
+*     description: Find user messages by username
+*     produces:
+*       - application/json
+*     parameters:
+*           - name: Authorization
+*             in: header
+*             required: true
+*           - name: username
+*             in: path
+*             description: username of user to return
+*             reguired: true
+*           - name: no
+*             in: query
+*             description: pass an optional search string for looking up inventory
+*             required: false
+*           - name: latest
+*             in: query
+*             description: latest id sent by simulator api
+*             required: false
+*     responses:
+*       200:
+*         description: Successful operation
+*       401:
+*         description: Unauthorized
+*       404:
+*        description: User not found
+*
+*   post:
+*     description: Creates user messages
+*     produces:
+*       - application/json
+*     parameters:
+*           - name: Authorization
+*             in: header
+*             required: true
+*           - name: username
+*             in: path
+*             description: username of user to return
+*             reguired: true
+*           - name: no
+*             in: query
+*             description: pass an optional search string for looking up inventory
+*             required: false
+*           - name: latest
+*             in: query
+*             description: latest id sent by simulator api
+*             required: false
+*
+*     responses:
+*       200:
+*         description: Successful operation
+*       401:
+*         description: Unauthorized
+*       404:
+*        description: Invalid username supplied
+*/
 
 /** Follow, Unfollow and get followers of some user */
 let ctrlFollower = require('./Controllers/ctrlFollower')
 router.route('/fllws/:username').post(ctrlFollower.handleFollow)
 router.route('/fllws/:username').get(ctrlFollower.getFollowers)
+
+/**
+* General scrabing
+* @swagger
+*
+* /fllws/{username}:
+*   get:
+*     description: Get followers of user
+*     produces:
+*       - application/json
+*     parameters:
+*           - name: Authorization
+*             in: header
+*             required: true
+*           - name: username
+*             in: path
+*             description: username of user to return
+*             reguired: true
+*           - name: no
+*             in: query
+*             description: pass an optional search string for looking up inventory
+*             required: false
+*           - name: latest
+*             in: query
+*             description: latest id sent by simulator api
+*             required: false
+*     responses:
+*       200:
+*         description: Successful operation
+*       401:
+*         description: Unauthorized
+*       404:
+*        description: Invalid username supplied
+*
+*   post:
+*     description: Follow given username
+*     produces:
+*       - application/json
+*     parameters:
+*           - name: Authorization
+*             in: header
+*             required: true
+*           - name: username
+*             in: path
+*             description: username of user to return
+*             reguired: true
+*           - name: no
+*             in: query
+*             description: pass an optional search string for looking up inventory
+*             required: false
+*           - name: latest
+*             in: query
+*             description: latest id sent by simulator api
+*             required: false
+*
+*     responses:
+*       200:
+*         description: Successful operation
+*       401:
+*         description: Unauthorized
+*       404:
+*        description: Invalid username supplied
+*/
 
 // Export API routes
 module.exports = router;
