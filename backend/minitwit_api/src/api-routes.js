@@ -88,8 +88,19 @@ router.route('/register').post(ctrlUser.register)
  *     responses:
  *       204:
  *         description: User registered
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 id:
+ *                   type: integer
+ *                   description: The user ID.
+ *                 username:
+ *                 type: string
+ *                 description: The user name.
  *       400:
-           description: Error on insertion
+ *         description: Error on insertion
  */
 
 /** , read all messages, read and create user messages */
