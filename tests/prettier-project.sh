@@ -25,7 +25,7 @@ main() {
         if ! $force
         then
             echo "no force"
-            if [ $mod_files > 0 ]
+            if (( $mod_files > 0 ))
             then
                 echo "Git has $mod_files modified files, that will be included in this commit"
                 echo "Do you wish to continue?"
@@ -44,7 +44,7 @@ main() {
     else
         
       echo "Pretier found $files files to be updated"
-        if [$files > 0]
+        if (( $files > 0 ))
         then
             exit 1
         fi
