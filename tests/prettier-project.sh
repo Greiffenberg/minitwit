@@ -36,7 +36,6 @@ main() {
                 done
             fi
         fi
-        echo "Will write prettier formats to files"
         prettier --write $directory
         echo "$files changed"
         git commit -a -m "Prettier files: $files"
@@ -62,6 +61,7 @@ set_modified_files_for_commit(){
 }
 
 showhelp() {
+  echo ""
   echo " Help for $0"
   echo "    -h: Shows this help text."
   echo "    -w: Write prettier format in place. but ask to continue if git has modfied files"
