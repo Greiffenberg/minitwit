@@ -74,7 +74,7 @@ while getopts "hwf" o; do
     case "${o}" in
         h)
             showhelp
-            exit 1
+            exit 0
             ;;
         w)
             will_write=true
