@@ -2,6 +2,8 @@ os: linux
 dist: bionic
 
 language: node_js
+node_js:
+  - 8
 
 services:
   - docker  # required, but travis uses older version of docker :(
@@ -19,6 +21,8 @@ jobs:
     - stage: docker_build
       name: "build and push docker"
       script:
+        - npm install -g eslint
+        - (cd tests && bash lint-project.sh && cd ..) || travis_terminate 1;
         - echo "LOGIN"
         - echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
         - echo "BUILD"
