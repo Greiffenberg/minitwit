@@ -40,7 +40,7 @@ then
 fi
 
 
-# git push release master
+git push release master
 
 # Switch back to previous branch and "un-stash"
 git checkout @{-1}
