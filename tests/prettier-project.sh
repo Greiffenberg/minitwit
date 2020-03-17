@@ -24,7 +24,6 @@ main() {
     then
         if ! $force
         then
-            echo "no force"
             if (( $mod_files > 0 ))
             then
                 echo "Git has $mod_files modified files, that will be included in this commit"
