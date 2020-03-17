@@ -22,10 +22,8 @@ main() {
     set_potential_files_count
     if $will_write
     then
-        if $force
+        if ! $force
         then
-            echo "FORCE"
-        else
             echo "no force"
             if [ $mod_files > 0 ]
             then
@@ -40,13 +38,13 @@ main() {
             fi
         fi
         echo "Will write prettier formats to files"
-    
+        prettier --write $directory
         echo "$files changed"
         git commit -a -m "Prettier files: $files"
     else
         
       echo "Pretier found $files files to be updated"
-        if [$mod_files > 0]
+        if [$files > 0]
         then
             exit 1
         fi
@@ -55,7 +53,6 @@ main() {
 }
 
 set_potential_files_count() {
-    echo "Looking in $directory"
     files=$(prettier --list-different $directory)
     files=( $files )
     files=${#files[@]}
