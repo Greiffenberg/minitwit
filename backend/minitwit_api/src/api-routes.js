@@ -103,21 +103,20 @@ router.route('/msgs/:username').get(ctrlMsg.readMsgsFromUser)
  *
  * /msgs:
  *   get:
- *     description: Get user messages
+ *     description: Get all messages
  *     produces:
  *       - application/json
  *     parameters:
- *           - name: Authorization
- *             in: query
- *             required: true
  *           - name: no
  *             in: query
- *             description: number_of_messages_to_return
+ *             description: Number of messages, to read
  *             required: false
+ *             type: number
  *           - name: latest
  *             in: query
  *             description: latest id sent by simulator api
  *             required: false
+ *             type: number
  *     responses:
  *       200:
  *         description: Message created
