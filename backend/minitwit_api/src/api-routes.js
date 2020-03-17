@@ -17,7 +17,7 @@ const swaggerUi = require('swagger-ui-express');
 // Basic doc options
 const options = {
     swaggerDefinition: {
-        basePath: 'http://104.248.246.24/api/v1', // Base path (optional)
+        basePath: '/api/v1', // Base path (optional)
         info: {
             title: 'Minitwit Backend API',
             version: '1.0.0',
@@ -53,6 +53,7 @@ router.route('/latest').get(ctrlUser.latest)
  *       200:
  *         description: latest
  */
+
 router.route('/register').post(ctrlUser.register)
 /**
  * General scrabing
@@ -68,6 +69,22 @@ router.route('/register').post(ctrlUser.register)
  *             in: query
  *             description: latest id sent by simulator api
  *             required: false
+ *             type: number
+ *           - name: username
+ *             in: body
+ *             description: desired username for the new user
+ *             required: true
+ *             type: string
+ *           - name: email
+ *             in: body
+ *             description: desired email for the new user
+ *             required: true
+ *             type: string
+ *           - name: pwd
+ *             in: body
+ *             description: desired username for the new user
+ *             required: true
+ *             type: string
  *     responses:
  *       204:
  *         description: User registered
