@@ -40,6 +40,14 @@ services:
       - 9100:9100
     restart: always
 
+  mongodb-exporter:
+    image: bitnami/mongodb-exporter:latest
+    container_name: mongodb-exporter
+    restart: always
+    network_mode: host
+    ports:
+      - '9216:9216'
+
 
   grafana:
     image: onedevopsitu/grafana
