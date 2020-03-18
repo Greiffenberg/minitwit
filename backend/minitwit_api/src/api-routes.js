@@ -41,7 +41,7 @@ let ctrlUser = require('./Controllers/ctrlUser')
 
 router.route('/latest').get(ctrlUser.latest)
 /**
- * General scrabing
+ * latest
  * @swagger
  *
  * /latest:
@@ -52,11 +52,16 @@ router.route('/latest').get(ctrlUser.latest)
  *     responses:
  *       200:
  *         description: latest
+ *         schema:
+ *           type: object
+ *           properties:
+ *             latest:
+ *               type: string
  */
 
 router.route('/register').post(ctrlUser.register)
 /**
- * General scrabing
+ * register
  * @swagger
  *
  * /register:
@@ -88,19 +93,12 @@ router.route('/register').post(ctrlUser.register)
  *     responses:
  *       204:
  *         description: User registered
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 id:
- *                   type: integer
- *                   description: The user ID.
- *                 username:
- *                 type: string
- *                 description: The user name.
  *       400:
- *         description: Error on insertion
+ *         schema:
+ *           type: object
+ *           properties:
+ *             message:
+ *               type: string
  */
 
 /** , read all messages, read and create user messages */
@@ -109,7 +107,7 @@ router.route('/msgs/').get(ctrlMsg.readMsgs)
 router.route('/msgs/:username').post(ctrlMsg.createMsg)
 router.route('/msgs/:username').get(ctrlMsg.readMsgsFromUser)
 /**
- * General scrabing
+ * messages
  * @swagger
  *
  * /msgs:
@@ -130,11 +128,20 @@ router.route('/msgs/:username').get(ctrlMsg.readMsgsFromUser)
  *             type: number
  *     responses:
  *       200:
- *         description: Message created
+ *         description: Messages read
+ *         schema:
+ *           type: array
+ *           items:
+ *              type: object
+ *              properties:
+ *                content:
+ *                  type: string
+ *                user:
+ *                  type: string
  */
 
 /**
-* General scrabing
+* messages with username
 * @swagger
 *
 * /msgs/{username}:
@@ -143,9 +150,6 @@ router.route('/msgs/:username').get(ctrlMsg.readMsgsFromUser)
 *     produces:
 *       - application/json
 *     parameters:
-*           - name: Authorization
-*             in: header
-*             required: true
 *           - name: username
 *             in: path
 *             description: username of user to return
@@ -161,40 +165,40 @@ router.route('/msgs/:username').get(ctrlMsg.readMsgsFromUser)
 *     responses:
 *       200:
 *         description: Successful operation
-*       401:
-*         description: Unauthorized
-*       404:
-*        description: User not found
-*
+ *         schema:
+ *           type: array
+ *           items:
+ *              type: object
+ *              properties:
+ *                content:
+ *                  type: string
+ *                user:
+ *                  type: string
 *   post:
 *     description: Creates user messages
 *     produces:
 *       - application/json
 *     parameters:
-*           - name: Authorization
-*             in: header
-*             required: true
 *           - name: username
 *             in: path
 *             description: username of user to return
 *             reguired: true
-*           - name: no
-*             in: query
-*             description: pass an optional search string for looking up inventory
-*             required: false
 *           - name: latest
 *             in: query
 *             description: latest id sent by simulator api
 *             required: false
-*
+ *           - name: content
+ *             in: body
+ *             type: object
+ *             properties:
+ *               content:
+ *                  type: string
 *     responses:
-*       200:
+*       204:
 *         description: Successful operation
-*       401:
-*         description: Unauthorized
-*       404:
-*        description: Invalid username supplied
-*/
+*       400:
+*         description: Bad request, content was missing
+ */
 
 /** Follow, Unfollow and get followers of some user */
 let ctrlFollower = require('./Controllers/ctrlFollower')
@@ -202,7 +206,7 @@ router.route('/fllws/:username').post(ctrlFollower.handleFollow)
 router.route('/fllws/:username').get(ctrlFollower.getFollowers)
 
 /**
-* General scrabing
+* Followers
 * @swagger
 *
 * /fllws/{username}:
@@ -211,9 +215,6 @@ router.route('/fllws/:username').get(ctrlFollower.getFollowers)
 *     produces:
 *       - application/json
 *     parameters:
-*           - name: Authorization
-*             in: header
-*             required: true
 *           - name: username
 *             in: path
 *             description: username of user to return
@@ -221,7 +222,7 @@ router.route('/fllws/:username').get(ctrlFollower.getFollowers)
 *           - name: no
 *             in: query
 *             description: pass an optional search string for looking up inventory
-*             required: false
+*             required: true
 *           - name: latest
 *             in: query
 *             description: latest id sent by simulator api
@@ -229,19 +230,15 @@ router.route('/fllws/:username').get(ctrlFollower.getFollowers)
 *     responses:
 *       200:
 *         description: Successful operation
-*       401:
-*         description: Unauthorized
-*       404:
-*        description: Invalid username supplied
-*
+ *         schema:
+ *          type: array
+ *          items:
+ *            type: string
 *   post:
 *     description: Follow given username
 *     produces:
 *       - application/json
 *     parameters:
-*           - name: Authorization
-*             in: header
-*             required: true
 *           - name: username
 *             in: path
 *             description: username of user to return
@@ -249,19 +246,20 @@ router.route('/fllws/:username').get(ctrlFollower.getFollowers)
 *           - name: no
 *             in: query
 *             description: pass an optional search string for looking up inventory
-*             required: false
+*             required: true
 *           - name: latest
 *             in: query
 *             description: latest id sent by simulator api
 *             required: false
-*
+ *           - name: follow
+ *             in: body
+ *             type: string
+ *           - name: unfollow
+ *             in: body
+ *             type: string
 *     responses:
-*       200:
+*       204:
 *         description: Successful operation
-*       401:
-*         description: Unauthorized
-*       404:
-*        description: Invalid username supplied
 */
 
 // Export API routes
