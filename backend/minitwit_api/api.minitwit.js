@@ -22,5 +22,5 @@ require('dotenv').config()
 const apiRoutes = require("./src/api-routes")
 app.use('/', apiRoutes)
 
-const server = "dummy, eslint unused var test"
+// const server = "dummy, eslint unused var test"
 app.listen(3005, () => console.log(`Listening on http://localhost:3005`))
