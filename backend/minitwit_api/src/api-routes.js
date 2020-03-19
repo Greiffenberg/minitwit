@@ -5,11 +5,6 @@ let router = require('express').Router()
 // Setting up global values for the API!
 latest = 0
 
-// Set default API url to redirect for Swagger Doc
-router.get('/', (req, res) => {
-    res.redirect('/doc')
-})
-
 // Enables swagger documentation through comments
 const swaggerJsdoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
@@ -30,9 +25,9 @@ const options = {
 
 const specs = swaggerJsdoc(options);
 
-router.use("/doc", swaggerUi.serve);
+router.use("/", swaggerUi.serve);
 
-router.get("/doc", swaggerUi.setup(specs, { explorer: true }));
+router.get("/", swaggerUi.setup(specs, { explorer: true }));
 
 /** SIMULATOR API ENDPOINTS */
 
