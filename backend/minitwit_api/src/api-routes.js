@@ -23,7 +23,14 @@ const options = {
     apis: ['./src/api-routes.js'],
 };
 
+// Load your swagger specification
 const specs = swaggerJsdoc(options);
+
+// API metrics from swagger
+const swStats = require('swagger-stats');
+
+// Enable swagger-stats middleware in express app, passing swagger specification as option
+app.use(swStats.getMiddleware(specs));
 
 router.use("/", swaggerUi.serve);
 
