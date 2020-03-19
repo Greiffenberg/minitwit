@@ -29,8 +29,8 @@ jobs:
         - docker build -t $DOCKER_USERNAME/frontend:latest . -f frontend/Dockerfile.prod
         - docker build -t $DOCKER_USERNAME/backend:latest . -f backend/Dockerfile.be
         - docker build -t $DOCKER_USERNAME/db:latest . -f backend/Dockerfile.db
-        - docker build -t $DOCKER_USERNAME/prometheus:latest . -f monitoring/prometheus/Dockerfile
-        - docker build -t $DOCKER_USERNAME/grafana:latest . -f monitoring/grafana/Dockerfile
+        - docker build -t $DOCKER_USERNAME/prometheus:latest . -f mon-log/prometheus/Dockerfile
+        - docker build -t $DOCKER_USERNAME/grafana:latest . -f mon-log/grafana/Dockerfile
         - echo "PUSH"
         - docker push $DOCKER_USERNAME/frontend:latest
         - docker push $DOCKER_USERNAME/backend:latest
