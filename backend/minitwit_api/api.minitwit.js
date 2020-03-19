@@ -1,6 +1,15 @@
 const promBundle = require("express-prom-bundle")
+const fs = require('fs')
+const path = require('path')
 const express = require('express')
 app = express()
+
+
+// setup the logger
+const morgan = require('morgan')
+// create a write stream (in append mode)
+let accessLogStream = fs.createWriteStream(path.join(__dirname, '/logs/access.log'), { flags: 'a' })
+app.use(morgan('combined', { stream: accessLogStream }))
 
 // Metrics for prometheus monitoring
 const metricsMiddleware = promBundle( {includeMethod: true}, {includePath: true}, {normalizePath: [
