@@ -23,4 +23,13 @@ The project can be launched independently of the backend.
 Located in the subdirectory: `/legacy_project/`
 
 The original code, running on python flask - refactored to run on linux 18_04 distros.
-11
+
+
+# SLA
+### Definitions
+- **"Downtime"** means unavailability by lack of connection or response from the services and endpoints.
+- **"Error"** means failure to handle valid requests or to serve intended content and responses.
+- **"Expected uptime"** for our services and endpoints is atleast 95% of non-downtime.
+- **"Expected error rate"** for our services and endpoints is of less than 2% of requests met by an error.
+- **"Expected performance"** is of less than a second in all api endpoint response times, with less
+ than 1000 returned objects (?no =< 1000). This time is excluding the **client** time to ping, for slow networks or remote regions.

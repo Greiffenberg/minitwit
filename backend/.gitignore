@@ -15,6 +15,7 @@
 node_modules
 node_modules/
 node_modules/*
+logs/*
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
