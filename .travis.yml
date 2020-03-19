@@ -42,8 +42,8 @@ jobs:
       name: "run tests"
       install: skip
       script:
-        - docker build -t $DOCKER_USERNAME/test -f tests/Dockerfile.test .
         - yes | docker-compose up -d
+        - docker build -t $DOCKER_USERNAME/test -f tests/Dockerfile.test .
         - docker run -it --rm --network=itu-minitwit-network $DOCKER_USERNAME/test
 
     - stage: deploy
