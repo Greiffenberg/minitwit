@@ -60,7 +60,6 @@ MongoDB Compas can be downloaded here:
 https://downloads.mongodb.com/compass/mongodb-compass-community_1.20.5_amd64.deb
 (After download just click to install)
 
-
 # SLA
 ### Definitions
 - **"Downtime"** means unavailability by lack of connection or response from the services and endpoints.
