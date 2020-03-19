@@ -3,7 +3,11 @@ const express = require('express')
 const app = express()
 
 // Metrics for prometheus monitoring
-const metricsMiddleware = promBundle({});
+const metricsMiddleware = promBundle( {includeMethod: true}, {includePath: true}, {normalizePath: [
+    ['/msgs/.*', '/msgs/#name'],
+    ['/fllws/.*', '/fllws/#name']
+  ]
+  });
 app.use(metricsMiddleware);
 
 // For parsing packet body to js objects by json format
