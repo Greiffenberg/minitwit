@@ -43,23 +43,6 @@ services:
     networks:
       - main
 
-  node-exporter:
-    image: prom/node-exporter:latest
-    container_name: node-exporter
-    networks:
-      - main
-    ports:
-      - 9100:9100
-
-  # mongodb-exporter:
-  #   image: bitnami/mongodb-exporter:latest
-  #   container_name: mongodb-exporter
-  #   networks:
-  #     - main
-  #   ports:
-  #     - '9216:9216'
-
-
   grafana:
     image: onedevopsitu/grafana
     container_name: grafana
@@ -70,3 +53,21 @@ services:
     environment:
      - GF_SECURITY_ADMIN_USER=Helge&friends
      - GF_SECURITY_ADMIN_PASSWORD=uiUIui
+
+# Images below are not needed for testing (they are from original and unmodified docker-hub images)
+
+  # node-exporter:
+  #   image: prom/node-exporter:latest
+  #   container_name: node-exporter
+  #   networks:
+  #     - main
+  #   ports:
+  #     - 9100:9100
+
+  # mongodb-exporter:
+  #   image: bitnami/mongodb-exporter:latest
+  #   container_name: mongodb-exporter
+  #   networks:
+  #     - main
+  #   ports:
+  #     - '9216:9216'
