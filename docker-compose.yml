@@ -22,6 +22,9 @@ services:
     container_name: backend
     networks:
       - main
+    volumes:
+      - /var/log:/logs 
+    
     depends_on:
       - db
     ports:
