@@ -2,6 +2,7 @@
   "annotations": {
     "list": [
       {
+        "$$hashKey": "object:7",
         "builtIn": 1,
         "datasource": "-- Grafana --",
         "enable": true,
@@ -15,7 +16,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 2,
+  "id": 1,
   "links": [],
   "panels": [
     {
@@ -35,6 +36,7 @@
     {
       "cacheTimeout": null,
       "colorBackground": false,
+      "colorPrefix": false,
       "colorValue": false,
       "colors": [
         "#299c46",
@@ -42,6 +44,448 @@
         "#d44a3a"
       ],
       "datasource": null,
+      "decimals": 2,
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 4,
+        "x": 5,
+        "y": 1
+      },
+      "id": 14,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "$$hashKey": "object:218",
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "$$hashKey": "object:219",
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "postfix": "%",
+      "postfixFontSize": "80%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false,
+        "ymax": null,
+        "ymin": null
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "expr": "(sum(http_request_duration_seconds_count{status_code=~\"200|204\"})/(sum(http_request_duration_seconds_count)))*100",
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "thresholds": "",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "20X's",
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "$$hashKey": "object:221",
+          "op": "=",
+          "text": "0",
+          "value": "null"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": null,
+      "decimals": 2,
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 9,
+        "y": 1
+      },
+      "id": 60,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "$$hashKey": "object:286",
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "$$hashKey": "object:287",
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "postfix": "%",
+      "postfixFontSize": "80%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false,
+        "ymax": null,
+        "ymin": null
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "expr": "(sum(http_request_duration_seconds_count{status_code=~\"300|304\"})/(sum(http_request_duration_seconds_count)))*100",
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "thresholds": "",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "30X's",
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "$$hashKey": "object:289",
+          "op": "=",
+          "text": "0",
+          "value": "null"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": null,
+      "decimals": 2,
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 13,
+        "y": 1
+      },
+      "id": 16,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "$$hashKey": "object:320",
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "$$hashKey": "object:321",
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "postfix": "%",
+      "postfixFontSize": "80%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false,
+        "ymax": null,
+        "ymin": null
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "expr": "(sum(http_request_duration_seconds_count{status_code=\"400\"})/(sum(http_request_duration_seconds_count)))*100",
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "thresholds": "",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "400's",
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "$$hashKey": "object:323",
+          "op": "=",
+          "text": "0",
+          "value": "null"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": null,
+      "decimals": 2,
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 17,
+        "y": 1
+      },
+      "id": 17,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "$$hashKey": "object:354",
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "$$hashKey": "object:355",
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "postfix": "%",
+      "postfixFontSize": "80%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false,
+        "ymax": null,
+        "ymin": null
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "expr": "(sum(http_request_duration_seconds_count{status_code=\"500\"})/(sum(http_request_duration_seconds_count)))*100",
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "thresholds": "",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "500's",
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "$$hashKey": "object:357",
+          "op": "=",
+          "text": "0",
+          "value": "null"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": null,
+      "decimals": 2,
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 5,
+        "y": 3
+      },
+      "id": 59,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "$$hashKey": "object:252",
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "$$hashKey": "object:253",
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "postfix": "%",
+      "postfixFontSize": "80%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false,
+        "ymax": null,
+        "ymin": null
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "expr": "(sum(http_request_duration_seconds_count{status_code=\"200\"})/(sum(http_request_duration_seconds_count)))*100",
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "thresholds": "",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "200's",
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "$$hashKey": "object:255",
+          "op": "=",
+          "text": "0",
+          "value": "null"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": "minitwit",
+      "decimals": 2,
       "format": "none",
       "gauge": {
         "maxValue": 100,
@@ -54,90 +498,7 @@
         "h": 2,
         "w": 2,
         "x": 7,
-        "y": 1
-      },
-      "id": 14,
-      "interval": null,
-      "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
-      "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "options": {},
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false,
-        "ymax": null,
-        "ymin": null
-      },
-      "tableColumn": "",
-      "targets": [
-        {
-          "expr": "http_request_duration_seconds_count{status_code=\"200\"}",
-          "refId": "A"
-        }
-      ],
-      "thresholds": "",
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "200's",
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "current"
-    },
-    {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "#299c46",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
-      ],
-      "datasource": null,
-      "format": "none",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 2,
-        "x": 9,
-        "y": 1
+        "y": 3
       },
       "id": 15,
       "interval": null,
@@ -145,10 +506,12 @@
       "mappingType": 1,
       "mappingTypes": [
         {
+          "$$hashKey": "object:116",
           "name": "value to text",
           "value": 1
         },
         {
+          "$$hashKey": "object:117",
           "name": "range to text",
           "value": 2
         }
@@ -156,9 +519,8 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
-      "postfix": "",
-      "postfixFontSize": "50%",
+      "postfix": "%",
+      "postfixFontSize": "80%",
       "prefix": "",
       "prefixFontSize": "50%",
       "rangeMaps": [
@@ -179,7 +541,11 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "http_request_duration_seconds_count{status_code=\"204\"}",
+          "expr": "(sum(http_request_duration_seconds_count{status_code=\"204\"})/(sum(http_request_duration_seconds_count)))*100",
+          "instant": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "",
           "refId": "A"
         }
       ],
@@ -191,178 +557,119 @@
       "valueFontSize": "80%",
       "valueMaps": [
         {
+          "$$hashKey": "object:119",
           "op": "=",
-          "text": "N/A",
+          "text": "0",
           "value": "null"
         }
       ],
       "valueName": "current"
     },
     {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "#299c46",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
-      ],
-      "datasource": null,
-      "format": "none",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
-      },
+      "datasource": "minitwit",
       "gridPos": {
-        "h": 2,
-        "w": 2,
-        "x": 11,
-        "y": 1
+        "h": 4,
+        "w": 24,
+        "x": 0,
+        "y": 5
       },
-      "id": 16,
-      "interval": null,
-      "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
+      "id": 62,
+      "options": {
+        "colorMode": "background",
+        "fieldOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "defaults": {
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 0.3
+                }
+              ]
+            }
+          },
+          "overrides": [],
+          "values": false
         },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
-      "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "options": {},
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false,
-        "ymax": null,
-        "ymin": null
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "vertical"
       },
-      "tableColumn": "",
+      "pluginVersion": "6.7.1",
       "targets": [
         {
-          "expr": "http_request_duration_seconds_count{status_code=\"400\"}",
+          "expr": "sum by (action)(http_request_duration_seconds_sum) / sum by (action)(http_request_duration_seconds_count)",
+          "format": "time_series",
+          "interval": "",
+          "legendFormat": "{{action}}",
           "refId": "A"
         }
       ],
-      "thresholds": "",
       "timeFrom": null,
       "timeShift": null,
-      "title": "400's",
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "current"
+      "title": "Avg. responsetime pr. request",
+      "type": "stat"
     },
     {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "#299c46",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
-      ],
-      "datasource": null,
-      "format": "none",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
-      },
+      "datasource": "minitwit",
       "gridPos": {
-        "h": 2,
-        "w": 2,
-        "x": 13,
-        "y": 1
+        "h": 4,
+        "w": 24,
+        "x": 0,
+        "y": 9
       },
-      "id": 17,
-      "interval": null,
-      "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
+      "id": 63,
+      "options": {
+        "colorMode": "background",
+        "fieldOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "defaults": {
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 0.3
+                }
+              ]
+            }
+          },
+          "overrides": [],
+          "values": false
         },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
-      "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "options": {},
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false,
-        "ymax": null,
-        "ymin": null
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "vertical"
       },
-      "tableColumn": "",
+      "pluginVersion": "6.7.1",
       "targets": [
         {
-          "expr": "http_request_duration_seconds_count{status_code=\"500\"}",
+          "expr": "sum by (status_code)(http_request_duration_seconds_sum) / sum by (status_code)(http_request_duration_seconds_count)",
+          "format": "time_series",
+          "interval": "",
+          "legendFormat": "{{status_code}}",
           "refId": "A"
         }
       ],
-      "thresholds": "",
       "timeFrom": null,
       "timeShift": null,
-      "title": "500's",
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "current"
+      "title": "Avg. responsetime pr. response",
+      "type": "stat"
     },
     {
       "aliasColors": {},
@@ -376,7 +683,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 3
+        "y": 13
       },
       "hiddenSeries": false,
       "id": 8,
@@ -467,7 +774,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 3
+        "y": 13
       },
       "hiddenSeries": false,
       "id": 19,
@@ -554,7 +861,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 11
+        "y": 21
       },
       "hiddenSeries": false,
       "id": 12,
@@ -640,7 +947,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 11
+        "y": 21
       },
       "hiddenSeries": false,
       "id": 20,
@@ -726,7 +1033,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 19
+        "y": 29
       },
       "id": 38,
       "panels": [],
@@ -739,7 +1046,7 @@
         "h": 3,
         "w": 3,
         "x": 9,
-        "y": 20
+        "y": 30
       },
       "id": 40,
       "options": {
@@ -771,7 +1078,7 @@
         "justifyMode": "auto",
         "orientation": "auto"
       },
-      "pluginVersion": "6.6.2",
+      "pluginVersion": "6.7.1",
       "targets": [
         {
           "expr": "mongodb_connections{state=\"current\"}",
@@ -806,7 +1113,7 @@
         "h": 3,
         "w": 3,
         "x": 12,
-        "y": 20
+        "y": 30
       },
       "id": 48,
       "interval": null,
@@ -825,7 +1132,6 @@
       "maxDataPoints": 100,
       "nullPointMode": "connected",
       "nullText": null,
-      "options": {},
       "postfix": "",
       "postfixFontSize": "50%",
       "prefix": "",
@@ -886,7 +1192,7 @@
         "h": 6,
         "w": 24,
         "x": 0,
-        "y": 23
+        "y": 33
       },
       "hiddenSeries": false,
       "id": 42,
@@ -985,7 +1291,7 @@
         "h": 6,
         "w": 12,
         "x": 0,
-        "y": 29
+        "y": 39
       },
       "hiddenSeries": false,
       "id": 46,
@@ -1078,7 +1384,7 @@
         "h": 6,
         "w": 12,
         "x": 12,
-        "y": 29
+        "y": 39
       },
       "hiddenSeries": false,
       "id": 44,
@@ -1171,7 +1477,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 35
+        "y": 45
       },
       "id": 32,
       "panels": [],
@@ -1186,7 +1492,7 @@
         "h": 4,
         "w": 3,
         "x": 0,
-        "y": 36
+        "y": 46
       },
       "id": 22,
       "links": [],
@@ -1237,7 +1543,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "6.6.2",
+      "pluginVersion": "6.7.1",
       "targets": [
         {
           "expr": "(((count(count(node_cpu_seconds_total{job=~\"prometheus\"}) by (cpu))) - avg(sum by (mode)(irate(node_cpu_seconds_total{mode='idle',job=~\"prometheus\"}[5m])))) * 100) / count(count(node_cpu_seconds_total{job=~\"prometheus\"}) by (cpu))",
@@ -1259,7 +1565,7 @@
         "h": 4,
         "w": 3,
         "x": 3,
-        "y": 36
+        "y": 46
       },
       "id": 24,
       "links": [],
@@ -1310,7 +1616,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "6.6.2",
+      "pluginVersion": "6.7.1",
       "targets": [
         {
           "expr": "avg(node_load5{}) /  count(count(node_cpu_seconds_total{}) by (cpu)) * 100",
@@ -1332,7 +1638,7 @@
         "h": 4,
         "w": 3,
         "x": 6,
-        "y": 36
+        "y": 46
       },
       "id": 26,
       "links": [],
@@ -1383,7 +1689,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "6.6.2",
+      "pluginVersion": "6.7.1",
       "targets": [
         {
           "expr": "avg(node_load15) /  count(count(node_cpu_seconds_total{}) by (cpu)) * 100",
@@ -1404,7 +1710,7 @@
         "h": 4,
         "w": 3,
         "x": 9,
-        "y": 36
+        "y": 46
       },
       "hideTimeOverride": false,
       "id": 28,
@@ -1449,7 +1755,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "6.6.2",
+      "pluginVersion": "6.7.1",
       "targets": [
         {
           "expr": "((node_memory_MemTotal_bytes{} - node_memory_MemFree_bytes{}) / (node_memory_MemTotal_bytes{} )) * 100",
@@ -1494,7 +1800,7 @@
         "h": 6,
         "w": 2,
         "x": 0,
-        "y": 40
+        "y": 50
       },
       "id": 30,
       "interval": null,
@@ -1514,7 +1820,6 @@
       "maxPerRow": 6,
       "nullPointMode": "null",
       "nullText": null,
-      "options": {},
       "postfix": "",
       "postfixFontSize": "50%",
       "prefix": "",
@@ -1583,7 +1888,7 @@
         "h": 6,
         "w": 22,
         "x": 2,
-        "y": 40
+        "y": 50
       },
       "hiddenSeries": false,
       "id": 50,
@@ -1755,7 +2060,7 @@
         "h": 7,
         "w": 2,
         "x": 0,
-        "y": 46
+        "y": 56
       },
       "id": 56,
       "interval": null,
@@ -1775,7 +2080,6 @@
       "maxPerRow": 6,
       "nullPointMode": "null",
       "nullText": null,
-      "options": {},
       "postfix": "",
       "postfixFontSize": "70%",
       "prefix": "",
@@ -1849,7 +2153,7 @@
         "h": 7,
         "w": 22,
         "x": 2,
-        "y": 46
+        "y": 56
       },
       "hiddenSeries": false,
       "id": 52,
@@ -2001,7 +2305,7 @@
         "h": 9,
         "w": 12,
         "x": 0,
-        "y": 53
+        "y": 63
       },
       "hiddenSeries": false,
       "id": 58,
@@ -2117,7 +2421,7 @@
         "h": 9,
         "w": 12,
         "x": 12,
-        "y": 53
+        "y": 63
       },
       "height": "",
       "hiddenSeries": false,
@@ -2209,7 +2513,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 62
+        "y": 72
       },
       "id": 2,
       "panels": [],
@@ -2222,7 +2526,7 @@
         "h": 4,
         "w": 3,
         "x": 0,
-        "y": 63
+        "y": 73
       },
       "id": 34,
       "options": {
@@ -2255,7 +2559,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "6.6.2",
+      "pluginVersion": "6.7.1",
       "targets": [
         {
           "expr": "nginx_connections_reading{}",
@@ -2273,7 +2577,7 @@
         "h": 4,
         "w": 3,
         "x": 3,
-        "y": 63
+        "y": 73
       },
       "id": 35,
       "options": {
@@ -2306,7 +2610,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "6.6.2",
+      "pluginVersion": "6.7.1",
       "targets": [
         {
           "expr": "nginx_connections_writing{}",
@@ -2324,7 +2628,7 @@
         "h": 4,
         "w": 3,
         "x": 6,
-        "y": 63
+        "y": 73
       },
       "id": 36,
       "options": {
@@ -2357,7 +2661,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "6.6.2",
+      "pluginVersion": "6.7.1",
       "targets": [
         {
           "expr": "nginx_connections_waiting{}",
@@ -2375,7 +2679,7 @@
         "h": 8,
         "w": 6,
         "x": 0,
-        "y": 67
+        "y": 77
       },
       "id": 4,
       "options": {
@@ -2407,7 +2711,7 @@
         "justifyMode": "auto",
         "orientation": "auto"
       },
-      "pluginVersion": "6.6.2",
+      "pluginVersion": "6.7.1",
       "targets": [
         {
           "expr": "nginx_connections_accepted{job=\"nginx\"}",
@@ -2431,7 +2735,7 @@
         "h": 8,
         "w": 17,
         "x": 6,
-        "y": 67
+        "y": 77
       },
       "hiddenSeries": false,
       "id": 6,
@@ -2534,5 +2838,8 @@
   "timezone": "",
   "title": "OneDevOpsV3",
   "uid": "imRVyIuZy",
+  "variables": {
+    "list": []
+  },
   "version": 1
 }
