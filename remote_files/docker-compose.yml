@@ -69,51 +69,51 @@ services:
      - GF_SECURITY_ADMIN_USER=Helge&friends
      - GF_SECURITY_ADMIN_PASSWORD=uiUIui
 
-  elasticsearch:
-    image: onedevopsitu/elasticsearch
-    container_name: elasticsearch
-    restart: always
-    volumes:
-      - esdata:/usr/share/elasticsearch/data
-    ports:
-      - "9200:9200"
-      - "9300:9300"
-    environment:
-      ES_JAVA_OPTS: "-Xmx256m -Xms256m"
-      ELASTIC_PASSWORD: changeme
-      # Use single node discovery in order to disable production mode and avoid bootstrap checks
-      # see https://www.elastic.co/guide/en/elasticsearch/reference/current/bootstrap-checks.html
-      discovery.type: single-node
-    networks:
-      - elk
+  # elasticsearch:
+  #   image: onedevopsitu/elasticsearch
+  #   container_name: elasticsearch
+  #   restart: always
+  #   volumes:
+  #     - esdata:/usr/share/elasticsearch/data
+  #   ports:
+  #     - "9200:9200"
+  #     - "9300:9300"
+  #   environment:
+  #     ES_JAVA_OPTS: "-Xmx256m -Xms256m"
+  #     ELASTIC_PASSWORD: changeme
+  #     # Use single node discovery in order to disable production mode and avoid bootstrap checks
+  #     # see https://www.elastic.co/guide/en/elasticsearch/reference/current/bootstrap-checks.html
+  #     discovery.type: single-node
+  #   networks:
+  #     - elk
 
-  logstash:
-    image: onedevopsitu/logstash
-    container_name: logstash
-    restart: always
-    volumes:
-      - type: bind
-        source: /var/log
-        target: /var/log
-    ports:
-      - "5000:5000/tcp"
-      - "5000:5000/udp"
-      - "9600:9600"
-    environment:
-      LS_JAVA_OPTS: "-Xmx256m -Xms256m"
-    networks:
-      - elk
-    depends_on:
-      - elasticsearch
+  # logstash:
+  #   image: onedevopsitu/logstash
+  #   container_name: logstash
+  #   restart: always
+  #   volumes:
+  #     - type: bind
+  #       source: /var/log
+  #       target: /var/log
+  #   ports:
+  #     - "5000:5000/tcp"
+  #     - "5000:5000/udp"
+  #     - "9600:9600"
+  #   environment:
+  #     LS_JAVA_OPTS: "-Xmx256m -Xms256m"
+  #   networks:
+  #     - elk
+  #   depends_on:
+  #     - elasticsearch
 
-  kibana:
-    image: onedevopsitu/kibana
-    container_name: kibana
-    restart: always
-    ports:
-      - "5601:5601"
-    networks:
-      - elk
-    depends_on:
-      - elasticsearch
-      - logstash
+  # kibana:
+  #   image: onedevopsitu/kibana
+  #   container_name: kibana
+  #   restart: always
+  #   ports:
+  #     - "5601:5601"
+  #   networks:
+  #     - elk
+  #   depends_on:
+  #     - elasticsearch
+  #     - logstash
