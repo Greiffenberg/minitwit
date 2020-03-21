@@ -12,21 +12,12 @@ let accessLogStream = fs.createWriteStream(path.join(__dirname, '/logs/minitwit_
 app.use(morgan('combined', { stream: accessLogStream }))
 
 // Metrics for prometheus monitoring
-<<<<<<< Updated upstream
 const metricsMiddleware = promBundle( {includeMethod: true, includePath: true, normalizePath: [
     ['^/msgs/.*', '/msgs/#name'],
     ['^/fllws/.*', '/fllws/#name']
   ]
   });
 app.use("/((?!favicon))*", metricsMiddleware);
-=======
-const metricsMiddleware = promBundle( {includeMethod: true}, {includePath: true}, {normalizePath: [
-    ['/msgs/.*', '/msgs/#name'],
-    ['/fllws/.*', '/fllws/#name']
-  ]
-  });
-app.use(metricsMiddleware);
->>>>>>> Stashed changes
 
 // For parsing packet body to js objects by json format
 const bodyParser = require('body-parser')
