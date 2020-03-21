@@ -73,10 +73,6 @@ services:
     image: onedevopsitu/elasticsearch
     container_name: elasticsearch
     volumes:
-      - type: bind
-        source: ./mon-log/elasticsearch/config/elasticsearch.yml
-        target: /usr/share/elasticsearch/config/elasticsearch.yml
-        read_only: true
       - esdata:/usr/share/elasticsearch/data
     ports:
       - "9200:9200"
@@ -95,14 +91,6 @@ services:
     container_name: logstash
     volumes:
       - type: bind
-        source: ./mon-log/logstash/config/logstash.yml
-        target: /usr/share/logstash/config/logstash.yml
-        read_only: true
-      - type: bind
-        source: ./mon-log/logstash/pipeline
-        target: /usr/share/logstash/pipeline
-        read_only: true
-      - type: bind
         source: /var/log
         target: /var/log
     ports:
@@ -119,11 +107,6 @@ services:
   kibana:
     image: onedevopsitu/kibana
     container_name: kibana
-    volumes:
-      - type: bind
-        source: ./mon-log/kibana/config/kibana.yml
-        target: /usr/share/kibana/config/kibana.yml
-        read_only: true
     ports:
       - "5601:5601"
     networks:
