@@ -6,9 +6,12 @@ version: '3.5'
 networks:
   main:
     name: 'itu-minitwit-network'
+  elk:
+
+volumes:
+  esdata:
 
 services:
-
   db:
     image: onedevopsitu/db
     container_name: db
@@ -22,6 +25,9 @@ services:
     container_name: backend
     networks:
       - main
+    volumes:
+      - /var/log:/logs 
+    
     depends_on:
       - db
     ports:
@@ -43,23 +49,6 @@ services:
     networks:
       - main
 
-  node-exporter:
-    image: prom/node-exporter:latest
-    container_name: node-exporter
-    networks:
-      - main
-    ports:
-      - 9100:9100
-
-  # mongodb-exporter:
-  #   image: bitnami/mongodb-exporter:latest
-  #   container_name: mongodb-exporter
-  #   networks:
-  #     - main
-  #   ports:
-  #     - '9216:9216'
-
-
   grafana:
     image: onedevopsitu/grafana
     container_name: grafana
@@ -70,3 +59,85 @@ services:
     environment:
      - GF_SECURITY_ADMIN_USER=Helge&friends
      - GF_SECURITY_ADMIN_PASSWORD=uiUIui
+
+# Images below are not needed for testing (they are from original and unmodified docker-hub images)
+# But are included for local tests
+
+  node-exporter:
+    image: prom/node-exporter:latest
+    container_name: node-exporter
+    networks:
+      - main
+    ports:
+      - 9100:9100
+
+  mongodb-exporter:
+    image: bitnami/mongodb-exporter:latest
+    container_name: mongodb-exporter
+    networks:
+      - main
+    ports:
+      - '9216:9216'
+
+  elasticsearch:
+    image: onedevopsitu/elasticsearch
+    container_name: elasticsearch
+    volumes:
+      - type: bind
+        source: ./mon-log/elasticsearch/config/elasticsearch.yml
+        target: /usr/share/elasticsearch/config/elasticsearch.yml
+        read_only: true
+      - esdata:/usr/share/elasticsearch/data
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    environment:
+      ES_JAVA_OPTS: "-Xmx256m -Xms256m"
+      ELASTIC_PASSWORD: changeme
+      # Use single node discovery in order to disable production mode and avoid bootstrap checks
+      # see https://www.elastic.co/guide/en/elasticsearch/reference/current/bootstrap-checks.html
+      discovery.type: single-node
+    networks:
+      - elk
+
+  logstash:
+    image: onedevopsitu/logstash
+    container_name: logstash
+    volumes:
+      - type: bind
+        source: ./mon-log/logstash/config/logstash.yml
+        target: /usr/share/logstash/config/logstash.yml
+        read_only: true
+      - type: bind
+        source: ./mon-log/logstash/pipeline
+        target: /usr/share/logstash/pipeline
+        read_only: true
+      - type: bind
+        source: /var/log
+        target: /var/log
+    ports:
+      - "5000:5000/tcp"
+      - "5000:5000/udp"
+      - "9600:9600"
+    environment:
+      LS_JAVA_OPTS: "-Xmx256m -Xms256m"
+    networks:
+      - elk
+    depends_on:
+      - elasticsearch
+
+  kibana:
+    image: onedevopsitu/kibana
+    container_name: kibana
+    volumes:
+      - type: bind
+        source: ./mon-log/kibana/config/kibana.yml
+        target: /usr/share/kibana/config/kibana.yml
+        read_only: true
+    ports:
+      - "5601:5601"
+    networks:
+      - elk
+    depends_on:
+      - elasticsearch
+      - logstash

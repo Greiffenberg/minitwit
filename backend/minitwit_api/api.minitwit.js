@@ -8,7 +8,7 @@ app = express()
 // setup the logger
 const morgan = require('morgan')
 // create a write stream (in append mode)
-let accessLogStream = fs.createWriteStream(path.join(__dirname, '/logs/access.log'), { flags: 'a' })
+let accessLogStream = fs.createWriteStream(path.join(__dirname, '/logs/minitwit_access.log'), { flags: 'a' })
 app.use(morgan('combined', { stream: accessLogStream }))
 
 // Metrics for prometheus monitoring
