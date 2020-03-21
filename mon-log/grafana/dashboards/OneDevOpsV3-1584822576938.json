@@ -277,7 +277,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "(sum(http_request_duration_seconds_count{status_code=\"400\"})/(sum(http_request_duration_seconds_count)))*100",
+          "expr": "(sum(http_request_duration_seconds_count{status_code=~\"400|404\"})/(sum(http_request_duration_seconds_count)))*100",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -286,7 +286,7 @@
       "thresholds": "",
       "timeFrom": null,
       "timeShift": null,
-      "title": "400's",
+      "title": "40X's",
       "type": "singlestat",
       "valueFontSize": "80%",
       "valueMaps": [
@@ -365,7 +365,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "(sum(http_request_duration_seconds_count{status_code=\"500\"})/(sum(http_request_duration_seconds_count)))*100",
+          "expr": "(sum(http_request_duration_seconds_count{status_code=~\"500|504\"})/(sum(http_request_duration_seconds_count)))*100",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -374,7 +374,7 @@
       "thresholds": "",
       "timeFrom": null,
       "timeShift": null,
-      "title": "500's",
+      "title": "50X's",
       "type": "singlestat",
       "valueFontSize": "80%",
       "valueMaps": [
@@ -606,10 +606,10 @@
       "pluginVersion": "6.7.1",
       "targets": [
         {
-          "expr": "sum by (action)(http_request_duration_seconds_sum) / sum by (action)(http_request_duration_seconds_count)",
+          "expr": "sum by (path)(http_request_duration_seconds_sum) / sum by (path)(http_request_duration_seconds_count)",
           "format": "time_series",
           "interval": "",
-          "legendFormat": "{{action}}",
+          "legendFormat": "{{path}}",
           "refId": "A"
         }
       ],
