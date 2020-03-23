@@ -3,9 +3,9 @@ import re
 from pprint import pprint
 
 # Setup of local data
-myclient = pymongo.MongoClient("mongodb://127.0.0.1/dev_db_minitwit")
-minitwitdb = myclient["dev_db_minitwit"]
-tweets = minitwitdb["tweets"]
+client = pymongo.MongoClient("mongodb://127.0.0.1:27017/")
+db = client["dev_db_minitwit"]
+tweets = db["Message"]
 
 # User input
 functionInput = input('Enter flagtool argument: ')
