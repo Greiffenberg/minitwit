@@ -40,7 +40,7 @@ def show_all():
 def flag_keyword(keyword):
     if keyword == '': return
 
-    mycol = tweets.find({"text": re.compile(keyword, re.IGNORECASE)}, {"_id": 1})
+    mycol = tweets.find({"content": re.compile(keyword, re.IGNORECASE)}, {"_id": 1})
     count = 0
 
     for tweetID in mycol:
