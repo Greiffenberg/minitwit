@@ -5,7 +5,7 @@ from pprint import pprint
 # Making a connection with the database
 client = pymongo.MongoClient("mongodb://127.0.0.1:27017/")
 db = client["dev_db_minitwit"]
-tweets = db["Message"]
+tweets = db["messages"]
 
 # User input
 functionInput = input('Enter flagtool argument: ')
