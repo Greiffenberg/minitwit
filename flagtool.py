@@ -2,21 +2,20 @@ import pymongo
 import re
 from pprint import pprint
 
-# Setup of local data
-myclient = pymongo.MongoClient("mongodb://127.0.0.1/dev_db_minitwit")
-minitwitdb = myclient["dev_db_minitwit"]
-tweets = minitwitdb["tweets"]
+# Making a connection with the database
+client = pymongo.MongoClient("mongodb://127.0.0.1:27017/")
+db = client["dev_db_minitwit"]
+tweets = db["messages"]
 
 # User input
 functionInput = input('Enter flagtool argument: ')
 
-# dictionary to map to a number to use in switch
-myDict = {
+# Dictionary mapping to a number to use in switch
+dictionary = {
     'help': 0,
     'showAll': 1,
     'id': 2
 }
-
 
 def main(arg, keyword):
     switcher = {
@@ -26,7 +25,7 @@ def main(arg, keyword):
     }
     return switcher.get(arg, "Argument options:\n 'help', 'showAll', 'id + <your keyword>'")
 
-
+# Finds everything in the collection
 def show_all():
     returncol = []
     for tweet in tweets.find():  # Finds all because no parameters are given
@@ -37,7 +36,7 @@ def show_all():
     else:
         return returncol
 
-
+# Flagging all the tweets containing the keyword
 def flag_keyword(keyword):
     if keyword == '': return
 
@@ -53,10 +52,10 @@ def flag_keyword(keyword):
     else:
         print('Did not find any matches')
 
-
+# Handles the input from the user
 if functionInput != '':
     if __name__ == '__main__':
         if functionInput[0:2] == 'id':
-            main(myDict.get(functionInput[0:2]), functionInput[3:])
+            main(dictionary.get(functionInput[0:2]), functionInput[3:])
         else:
-            pprint(main(myDict.get(functionInput), ''))
+            pprint(main(dictionary.get(functionInput), ''))
