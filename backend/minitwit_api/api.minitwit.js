@@ -14,7 +14,8 @@ app.use(morgan('combined', { stream: accessLogStream }))
 // Metrics for prometheus monitoring
 const metricsMiddleware = promBundle( {includeMethod: true, includePath: true, normalizePath: [
     ['^/msgs/.*', '/msgs/#name'],
-    ['^/fllws/.*', '/fllws/#name']
+    ['^/fllws/.*', '/fllws/#name'],
+    ['^/swagger-stats/.*', '/swagger-stats/#stat']
   ]
   });
 app.use("/((?!favicon))*", metricsMiddleware);
