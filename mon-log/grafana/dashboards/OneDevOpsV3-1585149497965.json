@@ -56,7 +56,7 @@
       "gridPos": {
         "h": 2,
         "w": 4,
-        "x": 5,
+        "x": 0,
         "y": 1
       },
       "id": 14,
@@ -100,7 +100,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "(sum(http_request_duration_seconds_count{status_code=~\"2..\"})/(sum(http_request_duration_seconds_count)))*100",
+          "expr": "sum(increase(http_request_duration_seconds_count{status_code=~\"2..\"}[$__range]))/sum(increase(http_request_duration_seconds_count[$__range]))*100",
           "interval": "",
           "intervalFactor": 1,
           "legendFormat": "",
@@ -145,7 +145,7 @@
       "gridPos": {
         "h": 4,
         "w": 4,
-        "x": 9,
+        "x": 4,
         "y": 1
       },
       "id": 60,
@@ -189,7 +189,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "(sum(http_request_duration_seconds_count{status_code=~\"3..\"})/(sum(http_request_duration_seconds_count)))*100",
+          "expr": "sum(increase(http_request_duration_seconds_count{status_code=~\"3..\"}[$__range]))/sum(increase(http_request_duration_seconds_count[$__range]))*100",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -233,7 +233,7 @@
       "gridPos": {
         "h": 4,
         "w": 4,
-        "x": 13,
+        "x": 8,
         "y": 1
       },
       "id": 16,
@@ -277,7 +277,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "(sum(http_request_duration_seconds_count{status_code=~\"4..\"})/(sum(http_request_duration_seconds_count)))*100",
+          "expr": "sum(increase(http_request_duration_seconds_count{status_code=~\"4..\"}[$__range]))/sum(increase(http_request_duration_seconds_count[$__range]))*100",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -321,7 +321,7 @@
       "gridPos": {
         "h": 4,
         "w": 4,
-        "x": 17,
+        "x": 12,
         "y": 1
       },
       "id": 17,
@@ -365,7 +365,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "(sum(http_request_duration_seconds_count{status_code=~\"5..\"})/(sum(http_request_duration_seconds_count)))*100",
+          "expr": "sum(increase(http_request_duration_seconds_count{status_code=~\"5..\"}[$__range]))/sum(increase(http_request_duration_seconds_count[$__range]))*100",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -386,6 +386,61 @@
         }
       ],
       "valueName": "current"
+    },
+    {
+      "datasource": "minitwit",
+      "gridPos": {
+        "h": 4,
+        "w": 8,
+        "x": 16,
+        "y": 1
+      },
+      "id": 65,
+      "interval": "",
+      "options": {
+        "colorMode": "background",
+        "fieldOptions": {
+          "calcs": [
+            "changeCount"
+          ],
+          "defaults": {
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 0.1
+                }
+              ]
+            }
+          },
+          "overrides": [],
+          "values": false
+        },
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "vertical"
+      },
+      "pluginVersion": "6.7.1",
+      "targets": [
+        {
+          "expr": "sum by (path)(http_request_duration_seconds_count{status_code=~\"5..\"})",
+          "format": "time_series",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "{{path}}",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "5XX's pr. path",
+      "type": "stat"
     },
     {
       "cacheTimeout": null,
@@ -409,7 +464,7 @@
       "gridPos": {
         "h": 2,
         "w": 2,
-        "x": 5,
+        "x": 0,
         "y": 3
       },
       "id": 59,
@@ -453,7 +508,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "(sum(http_request_duration_seconds_count{status_code=\"200\"})/(sum(http_request_duration_seconds_count)))*100",
+          "expr": "sum(increase(http_request_duration_seconds_count{status_code=\"200\"}[$__range]))/sum(increase(http_request_duration_seconds_count[$__range]))*100",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -497,7 +552,7 @@
       "gridPos": {
         "h": 2,
         "w": 2,
-        "x": 7,
+        "x": 2,
         "y": 3
       },
       "id": 15,
@@ -541,7 +596,7 @@
       "tableColumn": "",
       "targets": [
         {
-          "expr": "(sum(http_request_duration_seconds_count{status_code=\"204\"})/(sum(http_request_duration_seconds_count)))*100",
+          "expr": "sum(increase(http_request_duration_seconds_count{status_code=\"204\"}[$__range]))/sum(increase(http_request_duration_seconds_count[$__range]))*100",
           "instant": false,
           "interval": "",
           "intervalFactor": 1,
@@ -578,7 +633,7 @@
         "colorMode": "background",
         "fieldOptions": {
           "calcs": [
-            "mean"
+            "max"
           ],
           "defaults": {
             "mappings": [],
@@ -610,7 +665,7 @@
       "pluginVersion": "6.7.1",
       "targets": [
         {
-          "expr": "sum by (path)(rate(http_request_duration_seconds_sum{path!~\"/swagger.+\"}[1m]))",
+          "expr": "sum by (path)(rate(http_request_duration_seconds_sum{path!~\"/swag.+\"}[1m]))/sum by (path)(rate(http_request_duration_seconds_count{path!~\"/swag.+\"}[1m]))",
           "format": "time_series",
           "interval": "",
           "legendFormat": "{{path}}",
@@ -668,7 +723,7 @@
       "pluginVersion": "6.7.1",
       "targets": [
         {
-          "expr": "sum by (status_code)(rate(http_request_duration_seconds_sum[1m]) / rate(http_request_duration_seconds_count[1m]))",
+          "expr": "sum by (status_code)(rate(http_request_duration_seconds_sum{path!~\"/swag.+\"}[1m]))/sum by (status_code)(rate(http_request_duration_seconds_count{path!~\"/swag.+\"}[1m]))",
           "format": "time_series",
           "interval": "",
           "legendFormat": "{{status_code}}",
@@ -695,7 +750,7 @@
         "y": 13
       },
       "hiddenSeries": false,
-      "id": 12,
+      "id": 67,
       "legend": {
         "avg": false,
         "current": false,
@@ -721,7 +776,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "histogram_quantile(0.95, sum(rate(http_request_duration_seconds_bucket[1h])) by (le))",
+          "expr": "histogram_quantile(0.95, sum(rate(http_request_duration_seconds_bucket{}[1m]))by (le))",
+          "interval": "",
+          "legendFormat": "",
           "refId": "A"
         }
       ],
@@ -729,7 +786,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Request time (sec.) (0.95 Q)",
+      "title": "Request time (0.95Q)",
       "tooltip": {
         "shared": false,
         "sort": 0,
@@ -745,6 +802,7 @@
       },
       "yaxes": [
         {
+          "$$hashKey": "object:918",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -753,6 +811,7 @@
           "show": true
         },
         {
+          "$$hashKey": "object:919",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -807,7 +866,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum by (status_code)(rate(http_request_duration_seconds_sum[5m])/rate(http_request_duration_seconds_count[5m]))",
+          "expr": "sum by (status_code)(rate(http_request_duration_seconds_sum[1m])/rate(http_request_duration_seconds_count[1m]))",
           "interval": "",
           "legendFormat": "{{status_code}}",
           "refId": "A"
@@ -2855,5 +2914,5 @@
   "variables": {
     "list": []
   },
-  "version": 3
+  "version": 8
 }
