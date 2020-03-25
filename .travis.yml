@@ -31,18 +31,12 @@ jobs:
         - docker build -t $DOCKER_USERNAME/db:latest . -f backend/Dockerfile.db
         - docker build -t $DOCKER_USERNAME/prometheus:latest . -f mon-log/prometheus/Dockerfile
         - docker build -t $DOCKER_USERNAME/grafana:latest . -f mon-log/grafana/Dockerfile
-        - docker build -t $DOCKER_USERNAME/elasticsearch:latest . -f mon-log/elasticsearch/Dockerfile
-        - docker build -t $DOCKER_USERNAME/logstash:latest . -f mon-log/logstash/Dockerfile
-        - docker build -t $DOCKER_USERNAME/kibana:latest . -f mon-log/kibana/Dockerfile
         - echo "PUSH"
         - docker push $DOCKER_USERNAME/frontend:latest
         - docker push $DOCKER_USERNAME/backend:latest
         - docker push $DOCKER_USERNAME/db:latest
         - docker push $DOCKER_USERNAME/prometheus:latest
         - docker push $DOCKER_USERNAME/grafana:latest
-        - docker push $DOCKER_USERNAME/elasticsearch:latest
-        - docker push $DOCKER_USERNAME/logstash:latest
-        - docker push $DOCKER_USERNAME/kibana:latest
 
     - stage: test
       name: "run tests"
