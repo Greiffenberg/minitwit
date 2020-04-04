@@ -665,7 +665,7 @@
       "pluginVersion": "6.7.1",
       "targets": [
         {
-          "expr": "sum by (path)(rate(http_request_duration_seconds_sum{path!~\"/swag.+\"}[1m]))/sum by (path)(rate(http_request_duration_seconds_count{path!~\"/swag.+\"}[1m]))",
+          "expr": "sum by (path)(rate(http_request_duration_seconds_sum{path!~\"/swag.+\"}[5m]))/sum by (path)(rate(http_request_duration_seconds_count{path!~\"/swag.+\"}[5m]))",
           "format": "time_series",
           "interval": "",
           "legendFormat": "{{path}}",
@@ -740,6 +740,101 @@
       "bars": true,
       "dashLength": 10,
       "dashes": false,
+      "datasource": "minitwit",
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 7,
+        "w": 24,
+        "x": 0,
+        "y": 13
+      },
+      "hiddenSeries": false,
+      "id": 69,
+      "legend": {
+        "alignAsTable": false,
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "rightSide": false,
+        "show": false,
+        "total": false,
+        "values": false
+      },
+      "lines": false,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "rate(http_request_duration_seconds_sum{path!~\"/swag.+\"}[5m])/rate(http_request_duration_seconds_count{path!~\"/swag.+\"}[5m])",
+          "format": "time_series",
+          "interval": "",
+          "legendFormat": "{{path}} {{status_code}}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Avg. Request Time (Path)",
+      "tooltip": {
+        "shared": false,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "series",
+        "name": null,
+        "show": true,
+        "values": [
+          "avg"
+        ]
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:101",
+          "format": "s",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:102",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": true,
+      "dashLength": 10,
+      "dashes": false,
       "datasource": null,
       "fill": 1,
       "fillGradient": 0,
@@ -747,7 +842,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 13
+        "y": 20
       },
       "hiddenSeries": false,
       "id": 67,
@@ -837,7 +932,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 13
+        "y": 20
       },
       "hiddenSeries": false,
       "id": 19,
@@ -925,7 +1020,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 21
+        "y": 28
       },
       "hiddenSeries": false,
       "id": 8,
@@ -1019,7 +1114,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 21
+        "y": 28
       },
       "hiddenSeries": false,
       "id": 20,
@@ -1106,7 +1201,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 29
+        "y": 36
       },
       "id": 38,
       "panels": [],
@@ -1119,7 +1214,7 @@
         "h": 3,
         "w": 3,
         "x": 9,
-        "y": 30
+        "y": 37
       },
       "id": 40,
       "options": {
@@ -1186,7 +1281,7 @@
         "h": 3,
         "w": 3,
         "x": 12,
-        "y": 30
+        "y": 37
       },
       "id": 48,
       "interval": null,
@@ -1265,7 +1360,7 @@
         "h": 6,
         "w": 24,
         "x": 0,
-        "y": 33
+        "y": 40
       },
       "hiddenSeries": false,
       "id": 42,
@@ -1364,7 +1459,7 @@
         "h": 6,
         "w": 12,
         "x": 0,
-        "y": 39
+        "y": 46
       },
       "hiddenSeries": false,
       "id": 46,
@@ -1457,7 +1552,7 @@
         "h": 6,
         "w": 12,
         "x": 12,
-        "y": 39
+        "y": 46
       },
       "hiddenSeries": false,
       "id": 44,
@@ -1550,7 +1645,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 45
+        "y": 52
       },
       "id": 32,
       "panels": [],
@@ -1565,7 +1660,7 @@
         "h": 4,
         "w": 3,
         "x": 0,
-        "y": 46
+        "y": 53
       },
       "id": 22,
       "links": [],
@@ -1638,7 +1733,7 @@
         "h": 4,
         "w": 3,
         "x": 3,
-        "y": 46
+        "y": 53
       },
       "id": 24,
       "links": [],
@@ -1711,7 +1806,7 @@
         "h": 4,
         "w": 3,
         "x": 6,
-        "y": 46
+        "y": 53
       },
       "id": 26,
       "links": [],
@@ -1783,7 +1878,7 @@
         "h": 4,
         "w": 3,
         "x": 9,
-        "y": 46
+        "y": 53
       },
       "hideTimeOverride": false,
       "id": 28,
@@ -1873,7 +1968,7 @@
         "h": 6,
         "w": 2,
         "x": 0,
-        "y": 50
+        "y": 57
       },
       "id": 30,
       "interval": null,
@@ -1961,7 +2056,7 @@
         "h": 6,
         "w": 22,
         "x": 2,
-        "y": 50
+        "y": 57
       },
       "hiddenSeries": false,
       "id": 50,
@@ -2133,7 +2228,7 @@
         "h": 7,
         "w": 2,
         "x": 0,
-        "y": 56
+        "y": 63
       },
       "id": 56,
       "interval": null,
@@ -2226,7 +2321,7 @@
         "h": 7,
         "w": 22,
         "x": 2,
-        "y": 56
+        "y": 63
       },
       "hiddenSeries": false,
       "id": 52,
@@ -2378,7 +2473,7 @@
         "h": 9,
         "w": 12,
         "x": 0,
-        "y": 63
+        "y": 70
       },
       "hiddenSeries": false,
       "id": 58,
@@ -2494,7 +2589,7 @@
         "h": 9,
         "w": 12,
         "x": 12,
-        "y": 63
+        "y": 70
       },
       "height": "",
       "hiddenSeries": false,
@@ -2586,7 +2681,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 72
+        "y": 79
       },
       "id": 2,
       "panels": [],
@@ -2599,7 +2694,7 @@
         "h": 4,
         "w": 3,
         "x": 0,
-        "y": 73
+        "y": 80
       },
       "id": 34,
       "options": {
@@ -2650,7 +2745,7 @@
         "h": 4,
         "w": 3,
         "x": 3,
-        "y": 73
+        "y": 80
       },
       "id": 35,
       "options": {
@@ -2701,7 +2796,7 @@
         "h": 4,
         "w": 3,
         "x": 6,
-        "y": 73
+        "y": 80
       },
       "id": 36,
       "options": {
@@ -2752,7 +2847,7 @@
         "h": 8,
         "w": 6,
         "x": 0,
-        "y": 77
+        "y": 84
       },
       "id": 4,
       "options": {
@@ -2808,7 +2903,7 @@
         "h": 8,
         "w": 17,
         "x": 6,
-        "y": 77
+        "y": 84
       },
       "hiddenSeries": false,
       "id": 6,
@@ -2914,5 +3009,5 @@
   "variables": {
     "list": []
   },
-  "version": 8
+  "version": 1
 }
