@@ -1,6 +1,6 @@
 FROM node:latest
 
-COPY backend/minitwit_api ./
+# COPY backend/minitwit_api ./
 
 RUN npm install
 

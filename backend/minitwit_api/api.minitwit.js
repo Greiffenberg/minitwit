@@ -2,6 +2,7 @@ const promBundle = require("express-prom-bundle")
 const fs = require('fs')
 const path = require('path')
 const express = require('express')
+const helmet = require('helmet')
 app = express()
 
 
@@ -28,6 +29,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 // Enables all cors on all routes
 const cors = require('cors')
 app.use(cors())
+app.use(helmet())
 
 // Read of .env file variables
 require('dotenv').config()
