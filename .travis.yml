@@ -31,20 +31,20 @@ jobs:
         - docker build -t $DOCKER_USERNAME/db:latest . -f backend/Dockerfile.db
         - docker build -t $DOCKER_USERNAME/prometheus:latest . -f mon-log/prometheus/Dockerfile
         - docker build -t $DOCKER_USERNAME/grafana:latest . -f mon-log/grafana/Dockerfile
+        - docker build -t $DOCKER_USERNAME/test . -f tests/Dockerfile.test
         - echo "PUSH"
         - docker push $DOCKER_USERNAME/frontend:latest
         - docker push $DOCKER_USERNAME/backend:latest
         - docker push $DOCKER_USERNAME/db:latest
         - docker push $DOCKER_USERNAME/prometheus:latest
         - docker push $DOCKER_USERNAME/grafana:latest
+        - docker push $DOCKER_USERNAME/test:latest
 
     - stage: test
       name: "run tests"
       install: skip
       script:
-        - yes | docker-compose up -d
-        - docker build -t $DOCKER_USERNAME/test -f tests/Dockerfile.test .
-        - docker run -it --rm --network=itu-minitwit-network $DOCKER_USERNAME/test
+        - yes | docker-compose up
 
     - stage: deploy
       name: "deploy new version"
