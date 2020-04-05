@@ -23,7 +23,6 @@ services:
       - main
     volumes:
       - /var/log:/logs 
-    
     depends_on:
       - db
     ports:
@@ -36,6 +35,8 @@ services:
     container_name: frontend
     ports:
       - '3001:3001'
+    depends_on:
+      - backend
 
   prometheus:
     image: onedevopsitu/prometheus
@@ -44,6 +45,8 @@ services:
       - "9090:9090"
     networks:
       - main
+    depends_on:
+      - backend
 
   grafana:
     image: onedevopsitu/grafana
@@ -52,6 +55,8 @@ services:
       - "9111:3000"  
     networks:
       - main
+    depends_on:
+      - backend
     environment:
      - GF_SECURITY_ADMIN_USER=Helge&friends
      - GF_SECURITY_ADMIN_PASSWORD=uiUIui
@@ -64,6 +69,8 @@ services:
     container_name: node-exporter
     networks:
       - main
+    depends_on:
+      - backend
     ports:
       - 9100:9100
 
@@ -72,13 +79,7 @@ services:
     container_name: mongodb-exporter
     networks:
       - main
-    ports:
-      - '9216:9216'
-
-  minitwit-test:
-    image: onedevopsitu/test
-    container_name: test
-    networks:
-      - main
     depends_on:
       - backend
+    ports:
+      - '9216:9216'
