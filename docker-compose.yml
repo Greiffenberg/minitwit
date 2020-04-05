@@ -6,10 +6,6 @@ version: '3.5'
 networks:
   main:
     name: 'itu-minitwit-network'
-  elk:
-
-volumes:
-  esdata:
 
 services:
   db:
