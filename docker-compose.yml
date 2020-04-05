@@ -74,3 +74,11 @@ services:
       - main
     ports:
       - '9216:9216'
+
+  minitwit-test:
+    image: onedevopsitu/test
+    container_name: test
+    networks:
+      - main
+    depends_on:
+      - backend
