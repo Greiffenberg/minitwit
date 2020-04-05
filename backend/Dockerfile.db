@@ -1,5 +1,7 @@
 FROM mongo:latest
 
+COPY /remote_files/mongodb/data/ /data/dump/
+
 RUN echo 'RUNNING-RUNNIG'
 
 # docker-entrypoint.sh is included in the image, as entrypoint to run after the db is ready
