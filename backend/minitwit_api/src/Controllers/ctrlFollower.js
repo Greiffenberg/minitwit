@@ -5,17 +5,17 @@ exports.getFollowers = async (req, res) => {
 
     // Deconstruct url parameter and queries
     let { username } = req.params
-    let { no } = req.query.no
+    let { no } = req.query
 
     // update latest - latest is a global var
     latest = !!req.query.latest ? req.query.latest : latest
 
     try{
-        // Retrieve followers
-        let follows = await readFollowers(username)
-
         // Limit the output to the max no
-        if(!!no && no > 0) follows = follows.splice(0, no)
+        no = (!!no && no > 0) ? parseInt(no) : 0
+
+        // Retrieve followers
+        let follows = await readFollowers(username, no)
 
         return res.status(200).json({follows: follows, latest})
     } catch (error) {

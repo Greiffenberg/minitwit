@@ -104,19 +104,22 @@ exports.unfollowUser = async (userA, userB) => {
 }
 
 /** Read the followers of some user */
-exports.readFollowers = async (username) => {
+exports.readFollowers = async (username, no) => {
 
     // Find the user object
     let user = await User.findOne({name: username})
 
     // Find the follows
-    let follows = await Follower.find({who_id: user._id})
+    let follows = await Follower.find({who_id: user._id}).limit(no);
 
-    // For each follower object, find the user and mutate the object into the username
-    let followers = await Promise.all(follows.map(async (folObj) => {
-        let user = await User.findOne({_id: folObj.whom_id})
-        return user.name
-    }))
+    // Map follower ids to ObjectIds
+    let ids = follows.map(f => mongoose.Types.ObjectId(f.whom_id))
+
+    // Find the Users from the Ids
+    let result = await User.find({_id: {$in: ids}}, {name: 1, _id:0})
+
+    // Map the names of the followers
+    let followers = result.map(u => u.name)
 
     return followers
 }
