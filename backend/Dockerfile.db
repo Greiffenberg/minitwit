@@ -1,6 +1,6 @@
 FROM mongo:latest
 
-COPY /remote_files/mongodb/data /data/dump
+# COPY /remote_files/mongodb/data /data/dump
 
 RUN echo 'RUNNING-RUNNIG'
 
