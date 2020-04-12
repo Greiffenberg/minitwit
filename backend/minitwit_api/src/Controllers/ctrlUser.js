@@ -51,5 +51,14 @@ exports.register = async (req, res) => {
 
 /** Return the latest global value */
 exports.latest = async (req, res) => {
+    await delay(5000)
     return res.status(200).json({latest: Number(latest)})
+}
+
+/* FUNCTIONS */
+
+function delay(time) {
+    return new Promise(function(resolve) {
+        setTimeout(resolve, time)
+    });
 }
