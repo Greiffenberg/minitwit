@@ -426,7 +426,7 @@
         "justifyMode": "auto",
         "orientation": "vertical"
       },
-      "pluginVersion": "6.7.1",
+      "pluginVersion": "6.7.2",
       "targets": [
         {
           "expr": "sum by (path)(http_request_duration_seconds_count{status_code=~\"5..\"})",
@@ -623,7 +623,7 @@
     {
       "datasource": "minitwit",
       "gridPos": {
-        "h": 8,
+        "h": 12,
         "w": 12,
         "x": 0,
         "y": 5
@@ -662,7 +662,7 @@
         "justifyMode": "auto",
         "orientation": "horizontal"
       },
-      "pluginVersion": "6.7.1",
+      "pluginVersion": "6.7.2",
       "targets": [
         {
           "expr": "sum by (path)(rate(http_request_duration_seconds_sum{path!~\"/swag.+\"}[5m]))/sum by (path)(rate(http_request_duration_seconds_count{path!~\"/swag.+\"}[5m]))",
@@ -680,7 +680,7 @@
     {
       "datasource": "minitwit",
       "gridPos": {
-        "h": 8,
+        "h": 12,
         "w": 12,
         "x": 12,
         "y": 5
@@ -720,7 +720,7 @@
         "justifyMode": "auto",
         "orientation": "horizontal"
       },
-      "pluginVersion": "6.7.1",
+      "pluginVersion": "6.7.2",
       "targets": [
         {
           "expr": "sum by (status_code)(rate(http_request_duration_seconds_sum{path!~\"/swag.+\"}[1m]))/sum by (status_code)(rate(http_request_duration_seconds_count{path!~\"/swag.+\"}[1m]))",
@@ -747,7 +747,7 @@
         "h": 7,
         "w": 24,
         "x": 0,
-        "y": 13
+        "y": 17
       },
       "hiddenSeries": false,
       "id": 69,
@@ -842,7 +842,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 20
+        "y": 24
       },
       "hiddenSeries": false,
       "id": 67,
@@ -932,7 +932,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 20
+        "y": 24
       },
       "hiddenSeries": false,
       "id": 19,
@@ -1020,7 +1020,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 28
+        "y": 32
       },
       "hiddenSeries": false,
       "id": 8,
@@ -1114,7 +1114,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 28
+        "y": 32
       },
       "hiddenSeries": false,
       "id": 20,
@@ -1201,7 +1201,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 36
+        "y": 40
       },
       "id": 38,
       "panels": [],
@@ -1214,7 +1214,7 @@
         "h": 3,
         "w": 3,
         "x": 9,
-        "y": 37
+        "y": 41
       },
       "id": 40,
       "options": {
@@ -1246,7 +1246,7 @@
         "justifyMode": "auto",
         "orientation": "auto"
       },
-      "pluginVersion": "6.7.1",
+      "pluginVersion": "6.7.2",
       "targets": [
         {
           "expr": "mongodb_connections{state=\"current\"}",
@@ -1281,7 +1281,7 @@
         "h": 3,
         "w": 3,
         "x": 12,
-        "y": 37
+        "y": 41
       },
       "id": 48,
       "interval": null,
@@ -1360,7 +1360,7 @@
         "h": 6,
         "w": 24,
         "x": 0,
-        "y": 40
+        "y": 44
       },
       "hiddenSeries": false,
       "id": 42,
@@ -1459,7 +1459,7 @@
         "h": 6,
         "w": 12,
         "x": 0,
-        "y": 46
+        "y": 50
       },
       "hiddenSeries": false,
       "id": 46,
@@ -1552,7 +1552,7 @@
         "h": 6,
         "w": 12,
         "x": 12,
-        "y": 46
+        "y": 50
       },
       "hiddenSeries": false,
       "id": 44,
@@ -1645,7 +1645,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 52
+        "y": 56
       },
       "id": 32,
       "panels": [],
@@ -1660,7 +1660,7 @@
         "h": 4,
         "w": 3,
         "x": 0,
-        "y": 53
+        "y": 57
       },
       "id": 22,
       "links": [],
@@ -1711,7 +1711,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "6.7.1",
+      "pluginVersion": "6.7.2",
       "targets": [
         {
           "expr": "(((count(count(node_cpu_seconds_total{job=~\"prometheus\"}) by (cpu))) - avg(sum by (mode)(irate(node_cpu_seconds_total{mode='idle',job=~\"prometheus\"}[5m])))) * 100) / count(count(node_cpu_seconds_total{job=~\"prometheus\"}) by (cpu))",
@@ -1733,7 +1733,7 @@
         "h": 4,
         "w": 3,
         "x": 3,
-        "y": 53
+        "y": 57
       },
       "id": 24,
       "links": [],
@@ -1784,7 +1784,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "6.7.1",
+      "pluginVersion": "6.7.2",
       "targets": [
         {
           "expr": "avg(node_load5{}) /  count(count(node_cpu_seconds_total{}) by (cpu)) * 100",
@@ -1806,7 +1806,7 @@
         "h": 4,
         "w": 3,
         "x": 6,
-        "y": 53
+        "y": 57
       },
       "id": 26,
       "links": [],
@@ -1857,7 +1857,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "6.7.1",
+      "pluginVersion": "6.7.2",
       "targets": [
         {
           "expr": "avg(node_load15) /  count(count(node_cpu_seconds_total{}) by (cpu)) * 100",
@@ -1878,7 +1878,7 @@
         "h": 4,
         "w": 3,
         "x": 9,
-        "y": 53
+        "y": 57
       },
       "hideTimeOverride": false,
       "id": 28,
@@ -1923,7 +1923,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "6.7.1",
+      "pluginVersion": "6.7.2",
       "targets": [
         {
           "expr": "((node_memory_MemTotal_bytes{} - node_memory_MemFree_bytes{}) / (node_memory_MemTotal_bytes{} )) * 100",
@@ -1968,7 +1968,7 @@
         "h": 6,
         "w": 2,
         "x": 0,
-        "y": 57
+        "y": 61
       },
       "id": 30,
       "interval": null,
@@ -2056,7 +2056,7 @@
         "h": 6,
         "w": 22,
         "x": 2,
-        "y": 57
+        "y": 61
       },
       "hiddenSeries": false,
       "id": 50,
@@ -2228,7 +2228,7 @@
         "h": 7,
         "w": 2,
         "x": 0,
-        "y": 63
+        "y": 67
       },
       "id": 56,
       "interval": null,
@@ -2321,7 +2321,7 @@
         "h": 7,
         "w": 22,
         "x": 2,
-        "y": 63
+        "y": 67
       },
       "hiddenSeries": false,
       "id": 52,
@@ -2473,7 +2473,7 @@
         "h": 9,
         "w": 12,
         "x": 0,
-        "y": 70
+        "y": 74
       },
       "hiddenSeries": false,
       "id": 58,
@@ -2589,7 +2589,7 @@
         "h": 9,
         "w": 12,
         "x": 12,
-        "y": 70
+        "y": 74
       },
       "height": "",
       "hiddenSeries": false,
@@ -2681,7 +2681,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 79
+        "y": 83
       },
       "id": 2,
       "panels": [],
@@ -2694,7 +2694,7 @@
         "h": 4,
         "w": 3,
         "x": 0,
-        "y": 80
+        "y": 84
       },
       "id": 34,
       "options": {
@@ -2727,7 +2727,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "6.7.1",
+      "pluginVersion": "6.7.2",
       "targets": [
         {
           "expr": "nginx_connections_reading{}",
@@ -2745,7 +2745,7 @@
         "h": 4,
         "w": 3,
         "x": 3,
-        "y": 80
+        "y": 84
       },
       "id": 35,
       "options": {
@@ -2778,7 +2778,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "6.7.1",
+      "pluginVersion": "6.7.2",
       "targets": [
         {
           "expr": "nginx_connections_writing{}",
@@ -2796,7 +2796,7 @@
         "h": 4,
         "w": 3,
         "x": 6,
-        "y": 80
+        "y": 84
       },
       "id": 36,
       "options": {
@@ -2829,7 +2829,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "6.7.1",
+      "pluginVersion": "6.7.2",
       "targets": [
         {
           "expr": "nginx_connections_waiting{}",
@@ -2847,7 +2847,7 @@
         "h": 8,
         "w": 6,
         "x": 0,
-        "y": 84
+        "y": 88
       },
       "id": 4,
       "options": {
@@ -2879,7 +2879,7 @@
         "justifyMode": "auto",
         "orientation": "auto"
       },
-      "pluginVersion": "6.7.1",
+      "pluginVersion": "6.7.2",
       "targets": [
         {
           "expr": "nginx_connections_accepted{job=\"nginx\"}",
@@ -2903,7 +2903,7 @@
         "h": 8,
         "w": 17,
         "x": 6,
-        "y": 84
+        "y": 88
       },
       "hiddenSeries": false,
       "id": 6,
@@ -3009,5 +3009,5 @@
   "variables": {
     "list": []
   },
-  "version": 1
+  "version": 2
 }
