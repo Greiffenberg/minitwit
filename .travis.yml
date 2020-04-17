@@ -12,39 +12,39 @@ install:
   - docker --version  # document the version travis is using
 
 stages:
-  # - docker_build
-  # - test
+  - docker_build
+  - test
   - deploy
 
 jobs:
   include:
-    # - stage: docker_build
-    #   name: "build and push docker"
-    #   script:
-    #     - npm install -g eslint
-    #     - (cd tests && bash lint-project.sh && cd ..) || travis_terminate 1;
-    #     - echo "LOGIN"
-    #     - echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
-    #     - echo "BUILD"
-    #     - docker build -t $DOCKER_USERNAME/frontend:latest . -f frontend/Dockerfile.prod
-    #     - docker build -t $DOCKER_USERNAME/backend:latest . -f backend/Dockerfile.be
-    #     - docker build -t $DOCKER_USERNAME/db:latest . -f backend/Dockerfile.db
-    #     - docker build -t $DOCKER_USERNAME/prometheus:latest . -f mon-log/prometheus/Dockerfile
-    #     - docker build -t $DOCKER_USERNAME/grafana:latest . -f mon-log/grafana/Dockerfile
-    #     - echo "PUSH"
-    #     - docker push $DOCKER_USERNAME/frontend:latest
-    #     - docker push $DOCKER_USERNAME/backend:latest
-    #     - docker push $DOCKER_USERNAME/db:latest
-    #     - docker push $DOCKER_USERNAME/prometheus:latest
-    #     - docker push $DOCKER_USERNAME/grafana:latest
+    - stage: docker_build
+      name: "build and push docker"
+      script:
+        - npm install -g eslint
+        - (cd tests && bash lint-project.sh && cd ..) || travis_terminate 1;
+        - echo "LOGIN"
+        - echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
+        - echo "BUILD"
+        - docker build -t $DOCKER_USERNAME/frontend:latest . -f frontend/Dockerfile.prod
+        - docker build -t $DOCKER_USERNAME/backend:latest . -f backend/Dockerfile.be
+        - docker build -t $DOCKER_USERNAME/db:latest . -f backend/Dockerfile.db
+        # - docker build -t $DOCKER_USERNAME/prometheus:latest . -f mon-log/prometheus/Dockerfile
+        # - docker build -t $DOCKER_USERNAME/grafana:latest . -f mon-log/grafana/Dockerfile
+        - echo "PUSH"
+        - docker push $DOCKER_USERNAME/frontend:latest
+        - docker push $DOCKER_USERNAME/backend:latest
+        - docker push $DOCKER_USERNAME/db:latest
+        # - docker push $DOCKER_USERNAME/prometheus:latest
+        # - docker push $DOCKER_USERNAME/grafana:latest
 
-    # - stage: test
-    #   name: "run tests"
-    #   install: skip
-    #   script:
-    #     - yes | docker-compose up -d
-    #     - docker build -t $DOCKER_USERNAME/test -f tests/Dockerfile.test .
-    #     - docker run -it --rm --network=itu-minitwit-network $DOCKER_USERNAME/test
+    - stage: test
+      name: "run tests"
+      install: skip
+      script:
+        - yes | docker-compose up -d
+        - docker build -t $DOCKER_USERNAME/test -f tests/Dockerfile.test .
+        - docker run -it --rm --network=itu-minitwit-network $DOCKER_USERNAME/test
 
     - stage: deploy
       name: "deploy new version"
@@ -52,4 +52,5 @@ jobs:
       # -o flag to get around "add ip to known hosts prompt"
       script: |
         ssh -o "StrictHostKeyChecking no" ${MT_USER}@${NODE_0_IP} \
-        "docker service update --image onedevopsitu/backend backend"
+        "docker service update --image onedevopsitu/backend backend \
+        docker service update --image onedevopsitu/frontend frontend \"
