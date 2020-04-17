@@ -53,4 +53,4 @@ jobs:
       script: |
         ssh -o "StrictHostKeyChecking no" ${MT_USER}@${NODE_0_IP} \
         "docker service update --image onedevopsitu/backend backend \
-        docker service update --image onedevopsitu/frontend frontend \"
+        docker service update --image onedevopsitu/frontend frontend"
